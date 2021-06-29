@@ -1,1 +1,8 @@
-/* TODO Add site wide styles */
+/* Global Styles */
+h1, h2, h3, h4, h5, h6, nav, button, label {
+    font-family: 'Poppins', sans-serif;
+}
+
+p, a {
+    font-family: 'Roboto', sans-serif;
+}
