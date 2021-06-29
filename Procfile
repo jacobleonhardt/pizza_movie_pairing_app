@@ -1,1 +1,1 @@
-web: gunicorn pieflix.wsgi
+web: gunicorn pieflix:app
