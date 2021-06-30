@@ -33,7 +33,7 @@ function User() {
         <h2>Hey there, {user_info.username}</h2>
         <a className="button-link" href="/new">Find a Film</a>
       </div>
-      <div id="previous" className="previous-pairings">
+      <div id="previous" className="solid-block">
         <h3>Previous Pairings</h3>
         {previous ? <></> :
         <>

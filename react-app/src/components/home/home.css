@@ -1,5 +1,79 @@
 /* Landing/Splash Page */
 
+.greeting.landing {
+    display: flex;
+    padding: 5% 0 0;
+}
+
+.image-block.left{
+    width: 50%;
+    padding: 5%;
+    background-image: url("../../images/film-reel-dkn.png");
+    opacity: .75;
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+
+.image-block.bottom{
+    display: none;
+}
+
+.text-block {
+    width: 50%;
+    padding: 5%;
+    text-align: left;
+}
+
+#plus-graph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px;
+}
+
+#plus-graph img {
+    width: 100px;
+    height: 100px;
+}
+
+.solid-block p {
+    margin: 5% auto 0;
+    max-width: 50%;
+    font-size: 21px;
+    line-height: 28px;
+    text-align: left;
+}
+
+@media screen and (max-width: 768px) {
+    .greeting.landing {
+        display: block;
+        padding: 5% 0 0;
+    }
+
+    .image-block.left{
+        display: none;
+    }
+
+    .text-block {
+        display: block;
+        width: 100%;
+        padding: 5% 5% 0;
+        text-align: left;
+    }
+
+    .image-block.bottom{
+        display: block;
+        width: 100%;
+        padding-bottom: 15%;
+        background-image: url("../../images/film-reel-dkn.png");
+        opacity: .75;
+        background-repeat: no-repeat;
+        background-position: top center;
+    }
+}
+
+
 /* User Profile */
 .greeting {
     padding: 5%;
@@ -10,7 +84,7 @@
 }
 
 
-.previous-pairings {
+.solid-block {
     padding: 5%;
     margin: 0 auto;
     background: #810404;
