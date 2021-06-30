@@ -44,7 +44,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/:userId/new" exact={true}>
-          <User />
+          <PairingForm />
         </ProtectedRoute>
       </Switch>
       <Footer />

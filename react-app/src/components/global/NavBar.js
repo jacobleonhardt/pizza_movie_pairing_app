@@ -26,7 +26,7 @@ const NavBar = () => {
           <NavLink to={`/${user.id}`} exact={true} activeClassName="active">
             Profile
           </NavLink>
-          <NavLink to="/new" exact={true} activeClassName="active">
+          <NavLink to={`/${user.id}/new`} exact={true} activeClassName="active">
             Pair
           </NavLink>
           <LogoutButton />
