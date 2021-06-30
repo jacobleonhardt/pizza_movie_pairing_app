@@ -1,6 +1,7 @@
 /* Global Styles */
 body {
     margin: 0;
+    background-color: #000;
 }
 
 h1, h2, h3, h4, h5, h6, nav, button, label {
@@ -34,7 +35,7 @@ p, a {
 
 button, a.button-link {
     padding: 5px 15px;
-    border: 1.5px solid #fff;
+    border: 2px solid #fff;
     border-radius: 50px;
     margin-left: 10px;
     background: #810404;
@@ -51,7 +52,7 @@ button:hover, a.button-link:hover {
 
 .button-link-alt {
     padding: 5px 15px;
-    border: 1.5px solid #fff;
+    border: 2px solid #fff;
     border-radius: 50px;
     margin-left: 10px;
     background: linear-gradient(to right, #B71C02, #ECB906);

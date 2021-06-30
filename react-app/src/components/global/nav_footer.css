@@ -22,9 +22,9 @@ nav a {
     font-weight: 400;
 }
 
-nav button {
+nav button, .nav-button {
     padding: 0 10px;
-    border: 1.5px solid #fff;
+    border: 2px solid #fff;
     border-radius: 50px;
     margin-left: 10px;
     background: rgba(0,0,0,0);
@@ -34,7 +34,7 @@ nav button {
     font-weight: 400;
 }
 
-nav button:hover {
+nav button:hover, .nav-button:hover {
     background: linear-gradient(to right, #B71C02, #ECB906);
 }
 

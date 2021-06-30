@@ -30,7 +30,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Redirect to={`/${user.id}`} />;
   }
 
   const demo = (e) => {
