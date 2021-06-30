@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import "./auth.css";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -39,12 +40,14 @@ const SignUpForm = () => {
   }
 
   return (
+    <div class="form-container">
     <form onSubmit={onSignUp}>
       <div>
         <label>User Name</label>
         <input
           type="text"
           name="username"
+          placeholder="Username"
           onChange={updateUsername}
           value={username}
         ></input>
@@ -54,6 +57,7 @@ const SignUpForm = () => {
         <input
           type="text"
           name="email"
+          placeholder="Email"
           onChange={updateEmail}
           value={email}
         ></input>
@@ -63,6 +67,7 @@ const SignUpForm = () => {
         <input
           type="password"
           name="password"
+          placeholder="Password"
           onChange={updatePassword}
           value={password}
         ></input>
@@ -72,13 +77,15 @@ const SignUpForm = () => {
         <input
           type="password"
           name="repeat_password"
+          placeholder="Confirm Password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <button type="submit">Create Account</button>
     </form>
+    </div>
   );
 };
 

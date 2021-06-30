@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { login } from "../../store/session";
+import "./auth.css";
 
 const LoginForm = () => {
   const history = useHistory();
@@ -33,6 +34,7 @@ const LoginForm = () => {
   }
 
   return (
+    <div class="form-container">
     <form onSubmit={onLogin}>
       <div>
         {errors.map((error) => (
@@ -47,7 +49,7 @@ const LoginForm = () => {
           placeholder="Email"
           value={email}
           onChange={updateEmail}
-        />
+          />
       </div>
       <div>
         <label htmlFor="password">Password</label>
@@ -57,10 +59,11 @@ const LoginForm = () => {
           placeholder="Password"
           value={password}
           onChange={updatePassword}
-        />
+          />
         <button type="submit">Login</button>
       </div>
     </form>
+    </div>
   );
 };
 
