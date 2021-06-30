@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import { login } from "../../store/session";
+import { login, loginDemo } from "../../store/session";
 import "./auth.css";
 
 const LoginForm = () => {
@@ -14,7 +14,7 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
+    const data = dispatch(login(email, password));
     if (data.errors) {
       setErrors(data.errors);
     }
@@ -32,6 +32,16 @@ const LoginForm = () => {
   if (user) {
     return <Redirect to="/" />;
   }
+
+  const demo = (e) => {
+    e.preventDefault();
+    const data = dispatch(loginDemo());
+    if (data.errors) {
+      setErrors(data.errors);
+    }
+    history.push(`/${data.id}`)
+  };
+
 
   return (
     <div class="form-container">
@@ -62,6 +72,7 @@ const LoginForm = () => {
           />
         <button type="submit">Login</button>
       </div>
+      <button id="demo-user" onClick={e => demo(e)}>Demo User</button>
     </form>
     </div>
   );
