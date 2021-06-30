@@ -29,3 +29,8 @@
     width: 100%;
     font-size: 21px;
 }
+
+.form-container button#demo-user {
+    margin-top: 3%;
+    display: block;
+}
