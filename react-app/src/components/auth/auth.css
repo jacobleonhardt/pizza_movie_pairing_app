@@ -1,0 +1,31 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    height: 100vh;
+    padding: 5%;
+    background: linear-gradient(to left, #B71C02, #ECB906);
+}
+
+.form-container > div {
+    display: block;
+}
+
+.form-container form {
+    width: 75%;
+    max-width: 500px;
+}
+
+.form-container label {
+    display: none;
+}
+
+.form-container input {
+    display: block;
+    padding: 8px;
+    border: 2px solid #000;
+    margin: 8px;
+    width: 100%;
+    font-size: 21px;
+}

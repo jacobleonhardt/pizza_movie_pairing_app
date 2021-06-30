@@ -19,7 +19,7 @@ const NavBar = () => {
           <NavLink to="/login" exact={true} activeClassName="active">
             Login
           </NavLink>
-          <NavLink to="/create-account" exact={true} activeClassName="active">
+          <NavLink to="/new-account" exact={true} activeClassName="active">
             Create Account
           </NavLink>
           </> : <>
