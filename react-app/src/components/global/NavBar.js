@@ -19,15 +19,15 @@ const NavBar = () => {
           <NavLink to="/login" exact={true} activeClassName="active">
             Login
           </NavLink>
-          <NavLink to="/new-account" exact={true} activeClassName="active">
-            Create Account
+          <NavLink to="/new-account" exact={true} className="nav-button" activeClassName="active">
+            New Account
           </NavLink>
           </> : <>
-            <NavLink to="/" exact={true} activeClassName="active">
-            Home
+          <NavLink to={`/${user.id}`} exact={true} activeClassName="active">
+            Profile
           </NavLink>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
+          <NavLink to="/new" exact={true} activeClassName="active">
+            Pair
           </NavLink>
           <LogoutButton />
         </>}

@@ -6,7 +6,7 @@ import pizza from "../../images/pizza-graphic.png"
 
 function Landing() {
     return(
-        <>
+        <div className="content">
         <div className="greeting landing">
             <div className="image-block left">
             </div>
@@ -22,7 +22,7 @@ function Landing() {
             </div>
             <p>don't let your pizza get cold while you surf streaming platforms looking for something to watch. pieflix is here to find you the perfect pizza-movie pairing based off of your chosen pizza brand.</p>
         </div>
-        </>
+       </div>
     )
 }
 
