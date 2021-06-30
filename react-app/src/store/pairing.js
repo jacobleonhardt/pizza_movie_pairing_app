@@ -15,15 +15,8 @@ const removePair = (pair) => ({
 
 // thunks
 export const makeCall = (userId, pizzaPlace) => async(dispatch) => {
-    const response = await fetch(`/api/${userId}/new`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            pizzaPlace,
-        })
-    });
+
+    const response = await fetch(`/api/new/pair/${pizzaPlace}`);
 
     const movie = await response.json()
     console.log(">>>>>>>>>", movie)

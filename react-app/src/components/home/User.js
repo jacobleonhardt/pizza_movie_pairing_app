@@ -21,7 +21,7 @@ function User() {
       const user = await response.json();
       setUser(user);
     })();
-  }, [userId]);
+  }, []);
 
   if (!user) {
     return null;
