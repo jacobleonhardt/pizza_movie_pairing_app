@@ -3,38 +3,38 @@ const MAKE_PAIR = "pairing/MAKE_PAIR"
 const REMOVE_PAIR = "pairing/REMOVE_PAIR"
 
 // action creators
-const makePair = (pair) => ({
+const makePair = (movie) => ({
     type: MAKE_PAIR,
-    payload: pair
+    payload: movie
 })
 
-const removePair = (pair) => ({
+const removePair = (movie) => ({
     type: REMOVE_PAIR,
-    payload: pair
+    payload: movie
 })
 
 // thunks
 export const makeCall = (userId, pizzaPlace) => async(dispatch) => {
 
-    const response = await fetch(`/api/new/pair/${pizzaPlace}`);
-
+    const response = await fetch(`/api/new/pair/${userId}/${pizzaPlace}`);
     const movie = await response.json()
-    console.log(">>>>>>>>>", movie)
+
+    dispatch(makePair(movie))
+    return movie;
 };
 
 
 // reducer
-const initialState = {previous: []}
-let newState;
+// const initialState = {}
+// let newState;
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state = {}, action) {
     switch(action.type) {
         case MAKE_PAIR:
-            newState = {...action.payload, ...state}
-            return newState;
+            return {...action.payload, ...state};
         case REMOVE_PAIR:
-            newState = {...action.payload}
-            return newState;
+            // newState = {...action.payload}
+            return state;
         default:
             return state;
     }
