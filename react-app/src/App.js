@@ -8,6 +8,7 @@ import Footer from "./components/global/Footer";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Landing from "./components/home/Landing";
 import User from "./components/home/User";
+import PairingForm from "./components/pair/PairingForm";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -40,6 +41,9 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path="/:userId" exact={true}>
+          <User />
+        </ProtectedRoute>
+        <ProtectedRoute path="/:userId/new" exact={true}>
           <User />
         </ProtectedRoute>
       </Switch>
