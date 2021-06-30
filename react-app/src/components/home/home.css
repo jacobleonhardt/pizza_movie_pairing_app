@@ -1,0 +1,27 @@
+/* Landing/Splash Page */
+
+/* User Profile */
+.greeting {
+    padding: 5%;
+    margin: 0 auto;
+    background: linear-gradient(to left, #B71C02, #ECB906);
+    color: #fff;
+    text-align: center;
+}
+
+
+.previous-pairings {
+    padding: 5%;
+    margin: 0 auto;
+    background: #810404;
+    color: #fff;
+    text-align: center;
+}
+
+.none-message {
+    margin-bottom: 2%;
+    color: #fff;
+    opacity: .75;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}

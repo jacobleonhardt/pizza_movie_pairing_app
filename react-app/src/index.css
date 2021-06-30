@@ -1,8 +1,63 @@
 /* Global Styles */
+body {
+    margin: 0;
+}
+
 h1, h2, h3, h4, h5, h6, nav, button, label {
     font-family: 'Poppins', sans-serif;
 }
 
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3, h4, h5, h6 {
+    font-size: 1.75em;
+}
+
 p, a {
     font-family: 'Roboto', sans-serif;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+}
+
+button, a.button-link {
+    padding: 5px 15px;
+    border: 1.5px solid #fff;
+    border-radius: 50px;
+    margin-left: 10px;
+    background: #810404;
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    }
+
+button:hover, a.button-link:hover {
+    background: linear-gradient(to right, #B71C02, #ECB906);
+}
+
+.button-link-alt {
+    padding: 5px 15px;
+    border: 1.5px solid #fff;
+    border-radius: 50px;
+    margin-left: 10px;
+    background: linear-gradient(to right, #B71C02, #ECB906);
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    }
+
+.button-link-alt:hover {
+    background: linear-gradient(to bottom, #B71C02, #ECB906);
 }

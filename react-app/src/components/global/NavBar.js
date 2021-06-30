@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import './nav_footer.css';
 
 const NavBar = () => {
 
@@ -9,7 +10,10 @@ const NavBar = () => {
 
   return (
     <nav>
-      <a href={!user ? '/' : `/${user.id}`}><h1>pieflix</h1></a>
+      <div className="left">
+        <a id="logo" href={!user ? '/' : `/${user.id}`}>pieflix</a>
+      </div>
+      <div className="right">
       {!user ?
       <>
           <NavLink to="/login" exact={true} activeClassName="active">
@@ -27,6 +31,7 @@ const NavBar = () => {
           </NavLink>
           <LogoutButton />
         </>}
+      </div>
     </nav>
   );
 }
