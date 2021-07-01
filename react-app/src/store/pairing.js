@@ -47,7 +47,7 @@ let newState;
 export default function pairingReducer(state = initialState, action) {
     switch(action.type) {
         case GET_PAIR:
-            newState = [...action.payload, ...state]
+            newState = [...action.payload]
             return newState;
         case MAKE_PAIR:
             newState = [{...action.payload}, ...state]
