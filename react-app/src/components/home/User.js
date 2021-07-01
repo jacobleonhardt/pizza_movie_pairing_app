@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import PrevPairingCard from "./PrevPairs/PrevPairings"
 import "./home.css";
 
 function User() {
@@ -10,8 +11,7 @@ function User() {
   // From props.
   const { userId }  = useParams();
   const user_info = useSelector(state => state.session.user)
-
-  const previous = useSelector(state => state.previous)
+  const previous = useSelector(state => state.pairing)
 
   useEffect(() => {
     if (!userId) {
@@ -37,7 +37,10 @@ function User() {
       </div>
       <div id="previous" className="solid-block">
         <h3>Previous Pairings</h3>
-        {prev ? <></> :
+          {previous ?
+          <div>
+            {previous.map(movie => <PrevPairingCard movie={movie}/>)}
+          </div> :
         <>
           <div className="none-message">You don't have any Previous Pairs. Let's go get some!</div>
           <a className="button-link-alt" href="/new">Find a Film</a>

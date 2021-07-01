@@ -8,11 +8,12 @@ const PairingForm = () => {
     const user = useSelector(state => state.session.user)
     const [pizzaPlace, setPizzaPlace] = useState("dominos");
     const [condition, setCondition] = useState(false)
-    const movie = useSelector(state => state.pairing)
+    const selection = useSelector(state => state.pairing)
+    const movie = selection[0];
 
     const apiCall = async (e) => {
         e.preventDefault();
-        const pair = dispatch(makeCall(user.id, pizzaPlace))
+        const pair = await dispatch(makeCall(user.id, pizzaPlace))
         setCondition(true)
         return pair;
     }
