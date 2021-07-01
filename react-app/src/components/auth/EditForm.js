@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { updateUser } from "../../store/session";
 import "./auth.css";
 
 const EditForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const user = useSelector(state => state.session.user)
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
@@ -16,8 +17,8 @@ const EditForm = () => {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(updateUser(user.id, username, email, password));
-      return <Redirect to="/" />;
     }
+    return history.push('/');
   };
 
   const updateUsername = (e) => {
