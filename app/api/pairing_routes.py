@@ -6,7 +6,15 @@ import random
 
 pairing_routes = Blueprint('new', __name__)
 
-@pairing_routes.route('/pair/<int:userId>/dominos')
+
+@pairing_routes.route('/<int:userId>')
+@login_required
+def getPrePairings(userId):
+    prev = Pairing.query.filter(Pairing.user_id == userId).all()
+    prev_list = [movie.to_dict() for movie in prev]
+    return jsonify(prev_list)
+
+@pairing_routes.route('/new/<int:userId>/dominos')
 @login_required
 def pairing(userId):
     req = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=d4b83eae239cd5168bcdc521eeea13b6&include_adult=false&language=en-US&certification=PG-13&with_genres=28")
