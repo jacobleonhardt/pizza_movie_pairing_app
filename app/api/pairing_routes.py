@@ -20,10 +20,6 @@ def pairing(userId):
             possible_selections.append(movie)
 
     movie = random.choice(possible_selections);
-    # print('############', results)
-    # print('$$$$$$$$$$$$', prev)
-    # print('@@@@@@@@@@@@', possible_selections)
-    # print('&&&&&&&&&&&&', movie)
 
     pairing = Pairing(
         user_id=userId,
@@ -32,6 +28,10 @@ def pairing(userId):
         release_date=movie["release_date"],
         genre=movie["genre_ids"],
         plot=movie["overview"]
+        poster=movie["backdrop_path"]
     )
+
+    db.session.add(pairing)
+    db.session.commit()
 
     return pairing.to_dict()

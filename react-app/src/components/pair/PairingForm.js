@@ -7,10 +7,13 @@ const PairingForm = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const [pizzaPlace, setPizzaPlace] = useState("dominos");
+    const [condition, setCondition] = useState(false)
+    const movie = useSelector(state => state.pairing)
 
     const apiCall = async (e) => {
         e.preventDefault();
         const pair = dispatch(makeCall(user.id, pizzaPlace))
+        setCondition(true)
         return pair;
     }
 
@@ -19,6 +22,12 @@ const PairingForm = () => {
             <div className="greeting">
                 <h2>Find a Film</h2>
             </div>
+            { condition ?
+            <div id="pairing-display" className="solid-block">
+                <h3>{movie.title}</h3>
+                <h5>({movie.release_date})</h5>
+                <p>{movie.plot}</p>
+            </div> :
             <div id="pairing-form" className="solid-block">
                 <h3>Pick a Pizza Place</h3>
                 <form onSubmit={apiCall}>
@@ -33,7 +42,7 @@ const PairingForm = () => {
                     </select>
                     <button className="button-link-alt">Find a Film</button>
                 </form>
-            </div>
+            </div>}
         </div>
     )
 }

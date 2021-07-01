@@ -25,16 +25,17 @@ export const makeCall = (userId, pizzaPlace) => async(dispatch) => {
 
 
 // reducer
-// const initialState = {}
-// let newState;
+const initialState = {}
+let newState;
 
-export default function reducer(state = {}, action) {
+export default function reducer(state = initialState, action) {
     switch(action.type) {
         case MAKE_PAIR:
-            return {...action.payload, ...state};
+            newState = {...action.payload, ...state}
+            return newState;
         case REMOVE_PAIR:
-            // newState = {...action.payload}
-            return state;
+            newState = {...action.payload}
+            return newState;
         default:
             return state;
     }

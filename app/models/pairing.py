@@ -10,6 +10,7 @@ class Pairing(db.Model):
     release_date = db.Column(db.String)
     genre = db.Column(db.String)
     plot = db.Column(db.String)
+    poster = db.Column(db.String)
 
     user = db.relationship("User", back_populates="pairing")
 

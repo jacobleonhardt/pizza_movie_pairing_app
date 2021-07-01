@@ -5,6 +5,7 @@ import "./home.css";
 
 function User() {
   const [user, setUser] = useState({});
+  const [prev, setPrev] = useState({});
   // Notice we use useParams here instead of getting the params
   // From props.
   const { userId }  = useParams();
@@ -32,10 +33,11 @@ function User() {
       <div className="greeting">
         <h2>Hey there, {user_info.username}</h2>
         <a className="button-link" href="/new">Find a Film</a>
+        {/* <Redirect/> */}
       </div>
       <div id="previous" className="solid-block">
         <h3>Previous Pairings</h3>
-        {previous ? <></> :
+        {prev ? <></> :
         <>
           <div className="none-message">You don't have any Previous Pairs. Let's go get some!</div>
           <a className="button-link-alt" href="/new">Find a Film</a>
