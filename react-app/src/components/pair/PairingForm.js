@@ -8,11 +8,12 @@ const PairingForm = () => {
     const user = useSelector(state => state.session.user)
     const [pizzaPlace, setPizzaPlace] = useState("dominos");
     const [condition, setCondition] = useState(false)
-    const movie = useSelector(state => state.pairing)
+    const selection = useSelector(state => state.pairing)
+    const movie = selection[0];
 
     const apiCall = async (e) => {
         e.preventDefault();
-        const pair = dispatch(makeCall(user.id, pizzaPlace))
+        const pair = await dispatch(makeCall(user.id, pizzaPlace))
         setCondition(true)
         return pair;
     }
@@ -24,10 +25,14 @@ const PairingForm = () => {
             </div>
             { condition ?
             <div id="pairing-display" className="solid-block">
-                <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} />
-                <h3>{movie.title}</h3>
-                <h5>({movie.release_date})</h5>
-                <p>{movie.plot}</p>
+                <div className="left">
+                    <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} />
+                </div>
+                <div className="right">
+                    <h2>{movie.title}</h2>
+                    <h5>({movie.release_date ? movie.release_date.slice(0,4) : 'Unknown'})</h5>
+                    <p>{movie.plot}</p>
+                </div>
             </div> :
             <div id="pairing-form" className="solid-block">
                 <h3>Pick a Pizza Place</h3>
