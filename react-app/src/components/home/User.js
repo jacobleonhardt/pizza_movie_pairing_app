@@ -45,7 +45,7 @@ function User() {
         <h3>Previous Pairings</h3>
           {previous ?
           <div>
-            {previous.map(movie => <PrevPairingCard key={movie.id} movie={movie}/>)}
+            {previous.slice(0).reverse().map(movie => <PrevPairingCard key={movie.id} movie={movie}/>)}
           </div> :
         <>
           <div className="none-message">You don't have any Previous Pairs. Let's go get some!</div>
