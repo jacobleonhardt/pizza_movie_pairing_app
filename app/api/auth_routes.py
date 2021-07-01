@@ -100,18 +100,16 @@ def update_user(userId):
     """
     form = UpdateUser()
     print(request.get_json())
-    new = jsonify(request)
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.id == userId).first()
-        print('$$$$$$$$$$$$$$$$$$$', user.to_dict())
-        user["username"] = new["username"]
-        user["email"] = new["email"]
-        if new["password"]:
-            user["password"] = new["password"]
+        user.username=form.data['username']
+        user.email=form.data['email']
+        if form.data["password"]:
+            user.password=form.data['password']
 
         db.session.commit()
 
