@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <nav>
       <div className="left">
-        <a id="logo" href={!user ? '/' : `/${user.id}`}>pieflix</a>
+        <a id="logo" href="/">pieflix</a>
       </div>
       <div className="right">
       {!user ?
@@ -23,11 +23,14 @@ const NavBar = () => {
             New Account
           </NavLink>
           </> : <>
-          <NavLink to={`/`} exact={true} activeClassName="active">
+          <NavLink to="/" exact={true} activeClassName="active">
             Profile
           </NavLink>
-          <NavLink to={'/pair'} exact={true} activeClassName="active">
+          <NavLink to="/pair" exact={true} activeClassName="active">
             Pair
+          </NavLink>
+          <NavLink to="/account" exact={true} activeClassName="active">
+            Account
           </NavLink>
           <LogoutButton />
         </>}

@@ -6,6 +6,7 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/global/NavBar";
 import Footer from "./components/global/Footer";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import EditForm from "./components/auth/EditForm";
 import Landing from "./components/home/Landing";
 import User from "./components/home/User";
 import PairingForm from "./components/pair/PairingForm";
@@ -41,11 +42,11 @@ function App() {
         <Route path="/new-account" exact={true}>
           <SignUpForm />
         </Route>
-        {/* <ProtectedRoute path="/:userId" exact={true}>
-          <User />
-        </ProtectedRoute> */}
         <ProtectedRoute path="/pair" exact={true}>
           <PairingForm />
+        </ProtectedRoute>
+        <ProtectedRoute path="/account" exact={true}>
+          <EditForm />
         </ProtectedRoute>
       </Switch>
       <Footer />

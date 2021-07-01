@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { updateUser } from "../../store/session";
 import "./auth.css";
 
-const SignUpForm = () => {
+const EditForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  const onSignUp = async (e) => {
+  const updateAccount = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(updateUser(user.id, username, email, password));
+      return <Redirect to="/" />;
     }
   };
 
@@ -35,14 +36,10 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to="/" />;
-  }
-
   return (
     <div class="form-container">
-    <h2>Welcome to pieflix</h2>
-    <form onSubmit={onSignUp}>
+    <h2>Update Account</h2>
+    <form onSubmit={updateAccount}>
       <div>
         <label>User Name</label>
         <input
@@ -81,13 +78,13 @@ const SignUpForm = () => {
           placeholder="Confirm Password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
-          required={true}
+          required={password != ''}
         ></input>
       </div>
-      <button type="submit">Create Account</button>
+      <button type="submit">Update Account</button>
     </form>
     </div>
   );
 };
 
-export default SignUpForm;
+export default EditForm;

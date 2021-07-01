@@ -96,6 +96,41 @@ export const signUp = (username, email, password) => async (dispatch) => {
     return {};
 }
 
+export const updateUser = (userId, username, email, password) => async (dispatch) => {
+    let response;
+    if (password === '') {
+          response = await fetch(`/api/auth/update/${userId}`, {
+              method: "PATCH",
+          headers: {
+             "Content-Type": "application/json",
+         },
+         body: JSON.stringify({
+              username,
+                email,
+            }),
+        });
+    } else {
+        response = await fetch(`/api/auth/update/${userId}`, {
+            method: "PUT",
+        headers: {
+           "Content-Type": "application/json",
+       },
+       body: JSON.stringify({
+            username,
+              email,
+              password,
+          }),
+      });
+    }
+
+    const data = await response.json();
+    if (data.errors) {
+        return data;
+    }
+    dispatch(setUser(data))
+    return {};
+}
+
 
 
 const initialState = {user: null}

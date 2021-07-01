@@ -45,6 +45,7 @@ const LoginForm = () => {
 
   return (
     <div class="form-container">
+    <h2>Welcome Back</h2>
     <form onSubmit={onLogin}>
       <div>
         {errors.map((error) => (
