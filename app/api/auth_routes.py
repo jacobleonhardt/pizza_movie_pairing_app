@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
+from app.forms import UpdateUser
 from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint('auth', __name__)
@@ -91,6 +92,43 @@ def sign_up():
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+
+@auth_routes.route('/update/<int:userId>', methods=['PATCH', 'PUT'])
+def update_user(userId):
+    """
+    Edit/Update a current user
+    """
+    form = UpdateUser()
+    print(request.get_json())
+    # Get the csrf_token from the request cookie and put it into the
+    # form manually to validate_on_submit can be used
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        # Add the user to the session, we are logged in!
+        user = User.query.filter(User.id == userId).first()
+        user.username=form.data['username']
+        user.email=form.data['email']
+        if form.data["password"]:
+            user.password=form.data['password']
+
+        db.session.commit()
+
+        return user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+
+@auth_routes.route('/delete/<int:userId>', methods=['DELETE'])
+def delete(userId):
+    """
+    Logs a user in
+    """
+    print(request.get_json())
+
+    user = User.query.filter(User.id == userId).first()
+    db.session.delete(user)
+
+    return user.to_dict()
 
 @auth_routes.route('/unauthorized')
 def unauthorized():

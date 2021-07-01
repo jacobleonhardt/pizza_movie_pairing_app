@@ -1,11 +1,16 @@
 .form-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     max-width: 100%;
     height: 100vh;
     padding: 5%;
     background: linear-gradient(to left, #B71C02, #ECB906);
+}
+
+.form-container h2 {
+    color: #fff;
 }
 
 .form-container > div {

@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { Redirect, useHistory } from 'react-router-dom';
+import { updateUser, deleteUser } from "../../store/session";
 import "./auth.css";
 
-const SignUpForm = () => {
+const EditForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const user = useSelector(state => state.session.user)
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  const onSignUp = async (e) => {
+  const updateAccount = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(updateUser(user.id, username, email, password));
     }
+    return history.push('/');
   };
 
   const updateUsername = (e) => {
@@ -35,14 +37,16 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to="/" />;
-  }
+const deleteAccount = async(e) => {
+  e.preventDefault();
+  dispatch(deleteUser(user.id))
+  return history.push('/')
+}
 
   return (
     <div class="form-container">
-    <h2>Welcome to pieflix</h2>
-    <form onSubmit={onSignUp}>
+    <h2>Update Account</h2>
+    <form onSubmit={updateAccount}>
       <div>
         <label>User Name</label>
         <input
@@ -81,13 +85,14 @@ const SignUpForm = () => {
           placeholder="Confirm Password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
-          required={true}
+          required={password != ''}
         ></input>
       </div>
-      <button type="submit">Create Account</button>
+      <button type="submit">Update Account</button>
     </form>
+    <button id="delete-account-button" type="submit" onClick={deleteAccount}>Delete Account</button>
     </div>
   );
 };
 
-export default SignUpForm;
+export default EditForm;
