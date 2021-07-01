@@ -26,6 +26,7 @@ def upgrade():
     sa.Column('release_date', sa.String(), nullable=True),
     sa.Column('genre', sa.String(), nullable=True),
     sa.Column('plot', sa.String(), nullable=True),
+    sa.Column('poster', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
