@@ -1,3 +1,25 @@
+/* Form Style */
+#pairing-form form input, #pairing-form form button {
+    display: block;
+    margin: 10px auto;
+}
+
+#pairing-form form select {
+    display: block;
+    padding: 8px;
+    border: 2px solid #000;
+    margin: 8px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    font-size: 21px;
+}
+
+#pairing-form form label {
+    display: none;
+}
+
+/* Result Style */
 #pairing-display {
     display: flex;
     justify-content: center;
