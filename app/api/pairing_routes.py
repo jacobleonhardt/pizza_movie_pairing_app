@@ -24,7 +24,7 @@ def pairing(userId):
     possible_selections = []
 
     for movie in results:
-        if movie["title"] not in prev:
+        if movie not in prev:
             possible_selections.append(movie)
 
     movie = random.choice(possible_selections);

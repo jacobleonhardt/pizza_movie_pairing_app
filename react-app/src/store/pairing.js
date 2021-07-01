@@ -4,9 +4,9 @@ const MAKE_PAIR = "pairing/MAKE_PAIR"
 const REMOVE_PAIR = "pairing/REMOVE_PAIR"
 
 // action creators
-const getPair = (movie) => ({
+const getPair = (list) => ({
     type: GET_PAIR,
-    payload: movie
+    payload: list
 })
 
 const makePair = (movie) => ({
@@ -26,7 +26,7 @@ export const getPairs = (userId) => async (dispatch) => {
     const response = await fetch(`/api/pair/${userId}`);
     const list = await response.json();
 
-    dispatch(getPair(list))
+    dispatch(getPair(list.reverse()))
     return list;
 };
 
