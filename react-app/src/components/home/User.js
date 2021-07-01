@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import PrevPairingCard from "./PrevPairs/PrevPairings"
 import "./home.css";
 
@@ -33,7 +33,7 @@ function User() {
       <div className="greeting">
         <h2>Hey there, {user_info.username}</h2>
         <a className="button-link" href="/new">Find a Film</a>
-        {/* <Redirect/> */}
+        {/* <Redirect to="/new" /> */}
       </div>
       <div id="previous" className="solid-block">
         <h3>Previous Pairings</h3>
