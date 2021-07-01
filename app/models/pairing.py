@@ -22,5 +22,6 @@ class Pairing(db.Model):
             "title": self.title,
             "release_date": self.release_date,
             "genre": self.genre,
-            "plot": self.plot
+            "plot": self.plot,
+            "poster": self.poster
         }

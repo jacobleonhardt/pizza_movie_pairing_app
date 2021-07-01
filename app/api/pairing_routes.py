@@ -27,8 +27,8 @@ def pairing(userId):
         title=movie["title"],
         release_date=movie["release_date"],
         genre=movie["genre_ids"],
-        plot=movie["overview"]
-        poster=movie["backdrop_path"]
+        plot=movie["overview"],
+        poster=movie["poster_path"]
     )
 
     db.session.add(pairing)

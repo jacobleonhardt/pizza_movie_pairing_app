@@ -24,6 +24,7 @@ const PairingForm = () => {
             </div>
             { condition ?
             <div id="pairing-display" className="solid-block">
+                <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} />
                 <h3>{movie.title}</h3>
                 <h5>({movie.release_date})</h5>
                 <p>{movie.plot}</p>
