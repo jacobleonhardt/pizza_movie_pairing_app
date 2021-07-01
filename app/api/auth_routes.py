@@ -117,6 +117,19 @@ def update_user(userId):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+
+@auth_routes.route('/delete/<int:userId>', methods=['DELETE'])
+def delete(userId):
+    """
+    Logs a user in
+    """
+    print(request.get_json())
+
+    user = User.query.filter(User.id == userId).first()
+    db.session.delete(user)
+
+    return user.to_dict()
+
 @auth_routes.route('/unauthorized')
 def unauthorized():
     """

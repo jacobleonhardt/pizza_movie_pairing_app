@@ -131,6 +131,19 @@ export const updateUser = (userId, username, email, password) => async (dispatch
     return {};
 }
 
+export const deleteUser = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/auth/delete/${userId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            id: userId
+        })
+    });
+    const data = await response.json();
+    dispatch(removeUser());
+};
 
 
 const initialState = {user: null}

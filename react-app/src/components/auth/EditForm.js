@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from 'react-router-dom';
-import { updateUser } from "../../store/session";
+import { updateUser, deleteUser } from "../../store/session";
 import "./auth.css";
 
 const EditForm = () => {
@@ -36,6 +36,12 @@ const EditForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+const deleteAccount = async(e) => {
+  e.preventDefault();
+  dispatch(deleteUser(user.id))
+  return history.push('/')
+}
 
   return (
     <div class="form-container">
@@ -84,6 +90,7 @@ const EditForm = () => {
       </div>
       <button type="submit">Update Account</button>
     </form>
+    <button id="delete-account-button" type="submit" onClick={deleteAccount}>Delete Account</button>
     </div>
   );
 };
