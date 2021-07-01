@@ -1,27 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useParams, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from "react-router-dom";
+import { getPairs } from "../../store/pairing";
 import PrevPairingCard from "./PrevPairs/PrevPairings"
 import "./home.css";
 
 function User() {
   const [user, setUser] = useState({});
-  const [prev, setPrev] = useState({});
+  // const [prev, setPrev] = useState([]);
   // Notice we use useParams here instead of getting the params
   // From props.
-  const { userId }  = useParams();
+  // const { userId }  = useParams();
+  const dispatch = useDispatch();
   const user_info = useSelector(state => state.session.user)
   const previous = useSelector(state => state.pairing)
+  const userId = user_info.id
+
 
   useEffect(() => {
     if (!userId) {
       return
     }
+
     (async () => {
-      const response = await fetch(`/api/${userId}`);
+      const response = await fetch(`/api/user/${userId}`);
       const user = await response.json();
       setUser(user);
     })();
+      dispatch(getPairs(userId))
   }, []);
 
   if (!user) {
@@ -39,7 +45,7 @@ function User() {
         <h3>Previous Pairings</h3>
           {previous ?
           <div>
-            {previous.map(movie => <PrevPairingCard movie={movie}/>)}
+            {previous.map(movie => <PrevPairingCard key={movie.id} movie={movie}/>)}
           </div> :
         <>
           <div className="none-message">You don't have any Previous Pairs. Let's go get some!</div>

@@ -44,7 +44,7 @@ function App() {
         {/* <ProtectedRoute path="/:userId" exact={true}>
           <User />
         </ProtectedRoute> */}
-        <ProtectedRoute path="/new" exact={true}>
+        <ProtectedRoute path="/pair" exact={true}>
           <PairingForm />
         </ProtectedRoute>
       </Switch>
