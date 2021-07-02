@@ -4,7 +4,7 @@ import "./prevpairings.css"
 const PrevPairingCard = (movie) => {
     return (
         <div className="previous-pairing">
-            <div id="pairing-display" className="solid-block">
+            <div id="pairing-cards" className="solid-block">
                 <div className="first">
                     <img src={`https://image.tmdb.org/t/p/w500${movie.movie.poster}`} />
                 </div>

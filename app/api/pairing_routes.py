@@ -14,6 +14,7 @@ def getPrePairings(userId):
     prev_list = [movie.to_dict() for movie in prev]
     return jsonify(prev_list)
 
+
 @pairing_routes.route('/new/<int:userId>/dominos')
 @login_required
 def pairing(userId):
@@ -21,15 +22,13 @@ def pairing(userId):
     response = req.json();
     results = response["results"];
     prev = Pairing.query.filter(Pairing.user_id == userId).all()
-    previous_pairs = [pair["title"] for pair in prev]
     possible_selections = []
 
-    # for movie in results:
-    #     for pair in previous_pairs:
-    #         if movie["title"] != pair:
-    #             possible_selections.append(movie)
+    for movie in results:
+        if movie["title"] not in prev:
+            possible_selections.append(movie)
 
-    movie = random.choice(results);
+    movie = random.choice(possible_selections);
 
     pairing = Pairing(
         user_id=userId,

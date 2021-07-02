@@ -1,54 +1,55 @@
-#pairing-display.solid-block{
+#pairing-cards.solid-block{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
     grid-column-gap: 15px;
     max-width: 1000px;
     padding: 2%;
     margin-bottom: 2%;
 }
 
-#pairing-display .four {
+#pairing-cards .four {
     font-size: 32px;
 }
 
-#pairing-display .first img {
+#pairing-cards .first img {
     max-width: 150px;
 }
 
-#pairing-display h4 {
+#pairing-cards h4 {
     font-size: 1.25em;
     font-weight: 300;;
     text-align: left;
     margin: 0 auto;
 }
 
-#pairing-display button {
+#pairing-cards button {
     font-size: 21px;
     line-height: 1px;
     margin: 2%;
 }
 
 @media screen and (max-width: 997px) {
-    #pairing-display button {
+    #pairing-cards button {
         display: block;
         margin: 5%;
     }
 }
 
 @media screen and (max-width: 768px) {
-    #pairing-display.solid-block{
+    #pairing-cards.solid-block{
         display: block;
         margin-bottom: 8%;
     }
 
-    #pairing-display .first img {
+    #pairing-cards .first img {
         margin-bottom: 2%;
     }
 
-    #pairing-display h4 {
+    #pairing-cards h4 {
         text-align: center;
     }
-    #pairing-display button {
+    #pairing-cards button {
         margin: 2%;
         display: inline-block;
     }
