@@ -28,4 +28,4 @@ RUN pip install -r requirements.txt
 RUN pip install psycopg2
 
 # Run flask environment
-CMD gunicorn pieflix:app
+CMD gunicorn app:app
