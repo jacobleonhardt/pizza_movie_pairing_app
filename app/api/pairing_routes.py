@@ -21,11 +21,14 @@ def pairing(userId):
     response = req.json();
     results = response["results"];
     prev = Pairing.query.filter(Pairing.user_id == userId).all()
+    previous_pairs = [pair.to_dict() for pair in prev]
     possible_selections = []
 
     for movie in results:
-        if movie not in prev:
-            possible_selections.append(movie)
+        for pair in previous_pairs:
+            if movie["title"] != pair["title"]:
+                possible_selections.append(movie)
+
 
     movie = random.choice(possible_selections);
 
