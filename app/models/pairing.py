@@ -1,4 +1,5 @@
 from .db import db
+from datetime import datetime
 
 class Pairing(db.Model):
     __tablename__ = 'pairings'
@@ -11,6 +12,7 @@ class Pairing(db.Model):
     genre = db.Column(db.String)
     plot = db.Column(db.String)
     poster = db.Column(db.String)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     user = db.relationship("User", back_populates="pairing")
 
@@ -23,5 +25,6 @@ class Pairing(db.Model):
             "release_date": self.release_date,
             "genre": self.genre,
             "plot": self.plot,
-            "poster": self.poster
+            "poster": self.poster,
+            "created_at": self.created_at
         }
