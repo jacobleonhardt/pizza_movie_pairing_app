@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import db, Pairing
-# import requests
+import requests
 import random
 
 pairing_routes = Blueprint('new', __name__)
