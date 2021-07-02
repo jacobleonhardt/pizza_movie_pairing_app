@@ -1,28 +1,30 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { deletePair } from "../../../store/pairing";
-import { getPastReviews, newReview } from "../../../store/review";
+import { newReview } from "../../../store/review";
 import "./prevpairings.css"
 
-const PrevPairingCard = (movie) => {
+const PrevPairingCard = (movie, review) => {
     const dispatch = useDispatch()
     const userId = useSelector(state => state.session.user.id)
-
-    useEffect(() => {
-        dispatch(getPastReviews())
-    }, [])
+    let isGood = false;
+    let isBad = false;
 
     const deletePrevPair = () => {
         dispatch(deletePair(userId, movie.movie.id))
     };
 
     const thumbsUp = () => {
+        isGood = true;
         dispatch(newReview(true, userId, movie.movie.id))
+        console.log('##############', isGood)
     }
 
     const thumbsDown = () => {
+        isBad = true;
         dispatch(newReview(false, userId, movie.movie.id))
     }
+    console.log('##############', isGood)
 
     return (
         <div className="previous-pairing">
@@ -37,8 +39,8 @@ const PrevPairingCard = (movie) => {
                     <h4>{movie.movie.pizza}</h4>
                 </div>
                 <div className="four">
-                    <button onClick={thumbsUp}><ion-icon name="thumbs-up-outline"></ion-icon></button>
-                    <button onClick={thumbsDown}><ion-icon name="thumbs-down-outline"></ion-icon></button>
+                    <button disabled={isBad} onClick={thumbsUp} className={(isGood ? "good" : "no-vote")}><ion-icon name="thumbs-up-outline"></ion-icon></button>
+                    <button disabled={isGood} onClick={thumbsDown} className={(isBad ? "bad" : "no-vote")}><ion-icon name="thumbs-down-outline"></ion-icon></button>
                     <button onClick={deletePrevPair}><ion-icon name="trash-outline"></ion-icon></button>
                 </div>
             </div>

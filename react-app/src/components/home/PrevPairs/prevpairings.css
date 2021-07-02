@@ -29,6 +29,10 @@
     margin: 2%;
 }
 
+button.good {
+    background-color: green;
+}
+
 @media screen and (max-width: 997px) {
     #pairing-cards button {
         display: block;

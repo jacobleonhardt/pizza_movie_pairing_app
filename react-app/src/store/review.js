@@ -3,37 +3,37 @@ const GET_REVIEWS = "review/GET_REVIEWS"
 const GOOD_REVIEW = "review/GOOD_REVIEW"
 const BAD_REVIEW = "review/BAD_REVIEW"
 const REMOVE_REVIEW = "review/REMOVE_REVIEW"
-// const RESET_REVIEW = "review/RESET_REVIEW"
+const RESET_REVIEW = "review/RESET_REVIEW"
 
 // action creators
-const getReviews = (list) => ({
+const getReviews = (reviews) => ({
     type: GET_REVIEWS,
-    payload: list
+    payload: reviews
 })
 
-const good = (movie) => ({
+const good = (review) => ({
     type: GOOD_REVIEW,
-    payload: movie
+    payload: review
 })
 
-const bad = (movie) => ({
+const bad = (review) => ({
     type: BAD_REVIEW,
-    payload: movie
+    payload: review
 })
 
-const removeReview = (list) => ({
+const removeReview = (review) => ({
     type: REMOVE_REVIEW,
-    payload: list
+    payload: review
 })
 
-// const resetPairs = () => ({
-//     type: RESET_REVIEW
-// })
+const resetReviews = () => ({
+    type: RESET_REVIEW
+})
 
 // thunks
 
 export const getPastReviews = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/pair/${userId}`);
+    const response = await fetch(`/api/review/${userId}`);
     const list = await response.json();
 
     dispatch(getReviews(list))
@@ -43,6 +43,7 @@ export const getPastReviews = (userId) => async (dispatch) => {
 export const newReview = (vote, userId, pairId) => async(dispatch) => {
     const response = await fetch(`/api/review/${vote}/${userId}/${pairId}`);
     const review = await response.json()
+
 
     dispatch(good(review))
     return review;
@@ -72,9 +73,9 @@ export const deleteReview = (userId, pairId) => async(dispatch) => {
     dispatch(removeReview(newPrePairs));
 }
 
-// export const resetPrevPairs = () => async(dispatch) => {
-//     dispatch(resetPairs());
-// };
+export const resetUserReviews = () => async(dispatch) => {
+    dispatch(resetReviews());
+};
 
 
 
@@ -94,6 +95,9 @@ export default function reviewReducer(state = initialState, action) {
             newState = [...action.payload]
             return newState;
         case REMOVE_REVIEW:
+            newState = initialState
+            return newState;
+        case RESET_REVIEW:
             newState = initialState
             return newState;
         default:

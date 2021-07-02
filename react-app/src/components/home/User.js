@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { getPairs } from "../../store/pairing";
+import { getPastReviews } from "../../store/review";
 import PrevPairingCard from "./PrevPairs/PrevPairings"
 import "./home.css";
 
@@ -10,6 +11,8 @@ function User() {
   const dispatch = useDispatch();
   const user_info = useSelector(state => state.session.user)
   const previous = useSelector(state => state.pairing)
+  const review = useSelector(state => state.reviews)
+
   const userId = user_info.id
 
 
@@ -24,6 +27,7 @@ function User() {
       setUser(user);
     })();
       dispatch(getPairs(userId))
+      dispatch(getPastReviews(userId))
   }, []);
 
   if (!user) {
@@ -41,7 +45,7 @@ function User() {
         <div id="pairing-cards">
           {previous.length > 0 ?
           <div>
-            {previous.map(movie => <PrevPairingCard key={movie.id} movie={movie}/>)}
+            {previous.map(movie => <PrevPairingCard key={movie.id} movie={movie} review={review}/>)}
           </div> :
         <>
           <div className="none-message">You don't have any Previous Pairs. Let's go get some!</div>

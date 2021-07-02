@@ -7,7 +7,7 @@ import reviewReducer from "./review";
 const rootReducer = combineReducers({
     session,
     pairing: pairingReducer,
-    review: reviewReducer,
+    reviews: reviewReducer,
 });
 
 
