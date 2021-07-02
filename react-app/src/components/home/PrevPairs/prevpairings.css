@@ -33,6 +33,23 @@ button.good {
     background-color: green;
 }
 
+button.good:hover {
+    background-color: green;
+}
+
+
+button.bad {
+    background-color: red;
+}
+
+button.bad:hover {
+    background-color: red;
+}
+
+#pairing-cards button.hide {
+    display: none;
+}
+
 @media screen and (max-width: 997px) {
     #pairing-cards button {
         display: block;

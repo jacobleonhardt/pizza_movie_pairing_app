@@ -11,7 +11,6 @@ function User() {
   const dispatch = useDispatch();
   const user_info = useSelector(state => state.session.user)
   const previous = useSelector(state => state.pairing)
-  const review = useSelector(state => state.reviews)
 
   const userId = user_info.id
 
@@ -45,7 +44,7 @@ function User() {
         <div id="pairing-cards">
           {previous.length > 0 ?
           <div>
-            {previous.map(movie => <PrevPairingCard key={movie.id} movie={movie} review={review}/>)}
+            {previous.map(movie => <PrevPairingCard key={movie.id} movie={movie}/>)}
           </div> :
         <>
           <div className="none-message">You don't have any Previous Pairs. Let's go get some!</div>

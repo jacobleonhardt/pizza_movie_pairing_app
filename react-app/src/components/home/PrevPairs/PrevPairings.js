@@ -4,27 +4,35 @@ import { deletePair } from "../../../store/pairing";
 import { newReview } from "../../../store/review";
 import "./prevpairings.css"
 
-const PrevPairingCard = (movie, review) => {
+const PrevPairingCard = (movie) => {
     const dispatch = useDispatch()
     const userId = useSelector(state => state.session.user.id)
-    let isGood = false;
-    let isBad = false;
+    const review_list = useSelector(state => state.reviews)
+
+    const review = review_list.filter(review => {
+        if (review.pairing_id == movie.movie.id) return review
+    })
+
+    let isGood;
+    let isBad;
+
+    if (review["0"].good == true) {
+        isGood = true
+    } else {
+        isBad = true
+    }
 
     const deletePrevPair = () => {
         dispatch(deletePair(userId, movie.movie.id))
     };
 
     const thumbsUp = () => {
-        isGood = true;
         dispatch(newReview(true, userId, movie.movie.id))
-        console.log('##############', isGood)
     }
 
     const thumbsDown = () => {
-        isBad = true;
         dispatch(newReview(false, userId, movie.movie.id))
     }
-    console.log('##############', isGood)
 
     return (
         <div className="previous-pairing">
@@ -39,8 +47,8 @@ const PrevPairingCard = (movie, review) => {
                     <h4>{movie.movie.pizza}</h4>
                 </div>
                 <div className="four">
-                    <button disabled={isBad} onClick={thumbsUp} className={(isGood ? "good" : "no-vote")}><ion-icon name="thumbs-up-outline"></ion-icon></button>
-                    <button disabled={isGood} onClick={thumbsDown} className={(isBad ? "bad" : "no-vote")}><ion-icon name="thumbs-down-outline"></ion-icon></button>
+                    <button disabled={isGood} onClick={thumbsUp} className={(isGood ? "good" : "hide")}><ion-icon name="thumbs-up-outline"></ion-icon></button>
+                    <button disabled={isBad} onClick={thumbsDown} className={(isGood ? "hide" : "bad")}><ion-icon name="thumbs-down-outline"></ion-icon></button>
                     <button onClick={deletePrevPair}><ion-icon name="trash-outline"></ion-icon></button>
                 </div>
             </div>
