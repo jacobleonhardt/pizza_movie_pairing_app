@@ -39,3 +39,8 @@
     margin-top: 3%;
     display: block;
 }
+
+/* Delete Button on Account Page */
+#delete-account-button {
+    margin-top: 5%;
+}

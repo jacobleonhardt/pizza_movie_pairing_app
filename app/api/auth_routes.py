@@ -127,8 +127,9 @@ def delete(userId):
 
     user = User.query.filter(User.id == userId).first()
     db.session.delete(user)
+    db.session.commit()
 
-    return user.to_dict()
+    return {'message': 'Account was deleted'}
 
 @auth_routes.route('/unauthorized')
 def unauthorized():

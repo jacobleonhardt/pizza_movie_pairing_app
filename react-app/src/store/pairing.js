@@ -26,7 +26,7 @@ export const getPairs = (userId) => async (dispatch) => {
     const response = await fetch(`/api/pair/${userId}`);
     const list = await response.json();
 
-    dispatch(getPair(list))
+    dispatch(getPair(list.reverse()))
     return list;
 };
 
