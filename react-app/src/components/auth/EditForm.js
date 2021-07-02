@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from 'react-router-dom';
 import { updateUser, deleteUser } from "../../store/session";
 import { resetPrevPairs } from "../../store/pairing";
+import { resetUserReviews } from "../../store/review";
 import "./auth.css";
 
 const EditForm = () => {
@@ -42,6 +43,7 @@ const deleteAccount = async(e) => {
   e.preventDefault();
   dispatch(deleteUser(user.id))
   await dispatch(resetPrevPairs())
+  await dispatch(resetUserReviews())
   return history.push('/')
 }
 

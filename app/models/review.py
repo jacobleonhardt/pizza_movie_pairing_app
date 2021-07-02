@@ -17,7 +17,7 @@ class Review(db.Model):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "pairing_uid": self.pairing_id,
+            "pairing_id": self.pairing_id,
             "good": self.good,
             "created_at": self.created_at
         }
