@@ -1,5 +1,6 @@
-from python_fs.models import User
-from python_fs import app, db
+from "./app/models/user" import User
+from "./app" import app
+from "./app/models/db" import db
 from dotenv import load_dotenv
 from datetime import date, datetime, timedelta
 from faker import Faker
