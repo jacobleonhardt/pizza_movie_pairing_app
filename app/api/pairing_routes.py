@@ -4,7 +4,7 @@ from app.models import db, Pairing
 import requests
 import random
 
-pairing_routes = Blueprint('new', __name__)
+pairing_routes = Blueprint('pair', __name__)
 
 
 @pairing_routes.route('/<int:userId>')
@@ -19,7 +19,6 @@ def getPrePairings(userId):
 @login_required
 def deletePair(pairId):
     info = request.get_json()
-    print('&&&&&&&&&', info)
     pair = Pairing.query.filter(Pairing.id == pairId).first()
     db.session.delete(pair)
     db.session.commit()

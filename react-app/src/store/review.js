@@ -1,58 +1,63 @@
 // constants
-const GET_PAIR = "pairing/GET_PAIR"
-const MAKE_PAIR = "pairing/MAKE_PAIR"
-const REMOVE_PAIR = "pairing/REMOVE_PAIR"
-const RESET_PAIR = "pairing/RESET_PAIR"
+const GET_REVIEWS = "review/GET_REVIEWS"
+const GOOD_REVIEW = "review/GOOD_REVIEW"
+const BAD_REVIEW = "review/BAD_REVIEW"
+const REMOVE_REVIEW = "review/REMOVE_REVIEW"
+// const RESET_REVIEW = "review/RESET_REVIEW"
 
 // action creators
-const getPair = (list) => ({
-    type: GET_PAIR,
+const getReviews = (list) => ({
+    type: GET_REVIEWS,
     payload: list
 })
 
-const makePair = (movie) => ({
-    type: MAKE_PAIR,
+const good = (movie) => ({
+    type: GOOD_REVIEW,
     payload: movie
 })
 
-const removePair = (list) => ({
-    type: REMOVE_PAIR,
+const bad = (movie) => ({
+    type: BAD_REVIEW,
+    payload: movie
+})
+
+const removeReview = (list) => ({
+    type: REMOVE_REVIEW,
     payload: list
 })
 
-const resetPairs = () => ({
-    type: RESET_PAIR
-})
+// const resetPairs = () => ({
+//     type: RESET_REVIEW
+// })
 
 // thunks
 
-export const getPairs = (userId) => async (dispatch) => {
+export const getPastReviews = (userId) => async (dispatch) => {
     const response = await fetch(`/api/pair/${userId}`);
     const list = await response.json();
 
-    dispatch(getPair(list))
+    dispatch(getReviews(list))
     return list;
 };
 
-export const thumbsUp = (userId, pizzaPlace) => async(dispatch) => {
+export const newReview = (vote, userId, pairId) => async(dispatch) => {
+    const response = await fetch(`/api/review/${vote}/${userId}/${pairId}`);
+    const review = await response.json()
 
-    const response = await fetch(`/api/pair/new/${userId}/${pizzaPlace}`);
-    const movie = await response.json()
-
-    dispatch(makePair(movie))
-    return movie;
+    dispatch(good(review))
+    return review;
 };
 
-export const thumbsDown = (userId, pizzaPlace) => async(dispatch) => {
+// export const badReview = (userId, pairId) => async(dispatch) => {
 
-    const response = await fetch(`/api/pair/new/${userId}/${pizzaPlace}`);
-    const movie = await response.json()
+//     const response = await fetch(`/api/review/bad/${userId}/${pairId}`);
+//     const review = await response.json()
 
-    dispatch(makePair(movie))
-    return movie;
-};
+//     dispatch(bad(review))
+//     return review;
+// };
 
-export const deletePair = (userId, pairId) => async(dispatch) => {
+export const deleteReview = (userId, pairId) => async(dispatch) => {
     const response = await fetch(`/api/pair/delete/${pairId}`, {
         method: "DELETE",
         headers: {
@@ -64,12 +69,12 @@ export const deletePair = (userId, pairId) => async(dispatch) => {
         })
     });
     const newPrePairs = await response.json()
-    dispatch(removePair(newPrePairs));
+    dispatch(removeReview(newPrePairs));
 }
 
-export const resetPrevPairs = () => async(dispatch) => {
-    dispatch(resetPairs());
-};
+// export const resetPrevPairs = () => async(dispatch) => {
+//     dispatch(resetPairs());
+// };
 
 
 
@@ -79,16 +84,16 @@ let newState;
 
 export default function reviewReducer(state = initialState, action) {
     switch(action.type) {
-        case GET_PAIR:
+        case GET_REVIEWS:
             newState = [...action.payload]
             return newState;
-        case MAKE_PAIR:
+        case GOOD_REVIEW:
             newState = [{...action.payload}, ...state]
             return newState;
-        case REMOVE_PAIR:
+        case BAD_REVIEW:
             newState = [...action.payload]
             return newState;
-        case RESET_PAIR:
+        case REMOVE_REVIEW:
             newState = initialState
             return newState;
         default:

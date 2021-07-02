@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { deletePair } from "../../../store/pairing";
+import { getPastReviews, newReview } from "../../../store/review";
 import "./prevpairings.css"
 
 const PrevPairingCard = (movie) => {
     const dispatch = useDispatch()
     const userId = useSelector(state => state.session.user.id)
 
+    useEffect(() => {
+        dispatch(getPastReviews())
+    }, [])
+
     const deletePrevPair = () => {
         dispatch(deletePair(userId, movie.movie.id))
     };
 
-    const thumbsUp = (movie) => {
-        
+    const thumbsUp = () => {
+        dispatch(newReview(true, userId, movie.movie.id))
     }
 
-    const thumbsDown = (movie) => {
-
+    const thumbsDown = () => {
+        dispatch(newReview(false, userId, movie.movie.id))
     }
 
     return (
