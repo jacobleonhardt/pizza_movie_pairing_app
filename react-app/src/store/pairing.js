@@ -15,9 +15,9 @@ const makePair = (movie) => ({
     payload: movie
 })
 
-const removePair = (movie) => ({
+const removePair = (list) => ({
     type: REMOVE_PAIR,
-    payload: movie
+    payload: list
 })
 
 const resetPairs = () => ({
@@ -43,6 +43,21 @@ export const makeCall = (userId, pizzaPlace) => async(dispatch) => {
     return movie;
 };
 
+export const deletePair = (userId, pairId) => async(dispatch) => {
+    const response = await fetch(`/api/pair/delete/${pairId}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userId,
+            pairId
+        })
+    });
+    const newPrePairs = await response.json()
+    dispatch(removePair(newPrePairs));
+}
+
 export const resetPrevPairs = () => async(dispatch) => {
     dispatch(resetPairs());
 };
@@ -62,7 +77,7 @@ export default function pairingReducer(state = initialState, action) {
             newState = [{...action.payload}, ...state]
             return newState;
         case REMOVE_PAIR:
-            newState = {...action.payload}
+            newState = [...action.payload]
             return newState;
         case RESET_PAIR:
             newState = initialState

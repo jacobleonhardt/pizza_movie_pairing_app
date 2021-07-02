@@ -1,7 +1,16 @@
 import React from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { deletePair } from "../../../store/pairing";
 import "./prevpairings.css"
 
 const PrevPairingCard = (movie) => {
+    const dispatch = useDispatch()
+    const userId = useSelector(state => state.session.user.id)
+
+    const deletePrevPair = () => {
+        dispatch(deletePair(userId, movie.movie.id))
+    };
+
     return (
         <div className="previous-pairing">
             <div id="pairing-cards" className="solid-block">
@@ -17,7 +26,7 @@ const PrevPairingCard = (movie) => {
                 <div className="four">
                     <button><ion-icon name="thumbs-up-outline"></ion-icon></button>
                     <button><ion-icon name="thumbs-down-outline"></ion-icon></button>
-                    <button><ion-icon name="trash-outline"></ion-icon></button>
+                    <button onClick={deletePrevPair}><ion-icon name="trash-outline"></ion-icon></button>
                 </div>
             </div>
         </div>

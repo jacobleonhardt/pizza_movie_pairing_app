@@ -57,7 +57,7 @@
 
     .text-block {
         display: block;
-        width: 100%;
+        max-width: 100%;
         padding: 5% 5% 0;
         text-align: left;
     }

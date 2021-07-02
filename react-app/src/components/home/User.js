@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from "react-router-dom";
 import { getPairs } from "../../store/pairing";
 import PrevPairingCard from "./PrevPairs/PrevPairings"
 import "./home.css";
 
 function User() {
   const [user, setUser] = useState({});
-  // const [prev, setPrev] = useState([]);
-  // Notice we use useParams here instead of getting the params
-  // From props.
-  // const { userId }  = useParams();
   const dispatch = useDispatch();
   const user_info = useSelector(state => state.session.user)
   const previous = useSelector(state => state.pairing)
@@ -38,8 +34,7 @@ function User() {
     <div className="content">
       <div className="greeting">
         <h2>Hey there, {user_info.username}</h2>
-        <a className="button-link" href="/new">Find a Film</a>
-        {/* <Redirect to="/new" /> */}
+        <Link className="button-link" to="/pair">Find a Film</Link>
       </div>
       <div id="previous" className="solid-block">
         <h3>Previous Pairings</h3>

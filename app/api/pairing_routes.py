@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import db, Pairing
 import requests
@@ -11,6 +11,20 @@ pairing_routes = Blueprint('new', __name__)
 @login_required
 def getPrePairings(userId):
     prev = Pairing.query.filter(Pairing.user_id == userId).order_by(Pairing.created_at.desc()).all()
+    prev_list = [movie.to_dict() for movie in prev]
+    return jsonify(prev_list)
+
+
+@pairing_routes.route('/delete/<int:pairId>', methods=["DELETE"])
+@login_required
+def deletePair(pairId):
+    info = request.get_json()
+    print('&&&&&&&&&', info)
+    pair = Pairing.query.filter(Pairing.id == pairId).first()
+    db.session.delete(pair)
+    db.session.commit()
+
+    prev = Pairing.query.filter(Pairing.user_id == info["userId"]).order_by(Pairing.created_at.desc()).all()
     prev_list = [movie.to_dict() for movie in prev]
     return jsonify(prev_list)
 
