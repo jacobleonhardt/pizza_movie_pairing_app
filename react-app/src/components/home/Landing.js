@@ -11,6 +11,7 @@ function Landing() {
             <div className="image-block left">
             </div>
             <div className="text-block">
+                <h1>pieflix</h1>
                 <h2>the best movie<br/>for the best pizza</h2>
             </div>
             <div className="image-block bottom">

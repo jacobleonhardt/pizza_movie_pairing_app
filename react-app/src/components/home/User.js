@@ -38,6 +38,7 @@ function User() {
       </div>
       <div id="previous" className="solid-block">
         <h3>Previous Pairings</h3>
+        <div id="pairing-cards">
           {previous.length > 0 ?
           <div>
             {previous.map(movie => <PrevPairingCard key={movie.id} movie={movie}/>)}
@@ -46,6 +47,7 @@ function User() {
           <div className="none-message">You don't have any Previous Pairs. Let's go get some!</div>
           <Link className="button-link-alt" to="/pair">Find a Film</Link>
         </>}
+        </div>
       </div>
     </div>
 

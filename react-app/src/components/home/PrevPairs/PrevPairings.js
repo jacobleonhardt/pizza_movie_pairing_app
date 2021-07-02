@@ -11,6 +11,14 @@ const PrevPairingCard = (movie) => {
         dispatch(deletePair(userId, movie.movie.id))
     };
 
+    const thumbsUp = (movie) => {
+        
+    }
+
+    const thumbsDown = (movie) => {
+
+    }
+
     return (
         <div className="previous-pairing">
             <div id="pairing-cards" className="solid-block">
@@ -24,8 +32,8 @@ const PrevPairingCard = (movie) => {
                     <h4>{movie.movie.pizza}</h4>
                 </div>
                 <div className="four">
-                    <button><ion-icon name="thumbs-up-outline"></ion-icon></button>
-                    <button><ion-icon name="thumbs-down-outline"></ion-icon></button>
+                    <button onClick={thumbsUp}><ion-icon name="thumbs-up-outline"></ion-icon></button>
+                    <button onClick={thumbsDown}><ion-icon name="thumbs-down-outline"></ion-icon></button>
                     <button onClick={deletePrevPair}><ion-icon name="trash-outline"></ion-icon></button>
                 </div>
             </div>

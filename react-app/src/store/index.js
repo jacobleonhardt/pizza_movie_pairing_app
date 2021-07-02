@@ -1,11 +1,13 @@
 import {createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import session from "./session"
-import pairingReducer from "./pairing"
+import pairingReducer from "./pairing";
+import reviewReducer from "./review";
 
 const rootReducer = combineReducers({
     session,
     pairing: pairingReducer,
+    review: reviewReducer,
 });
 
 
