@@ -1,2 +1,2 @@
-web: gunicorn pieflix:app
-CMD gunicorn pieflix:app
+web: gunicorn app:app
+CMD gunicorn app:app
