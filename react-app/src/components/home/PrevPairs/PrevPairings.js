@@ -48,8 +48,8 @@ const PrevPairingCard = (movie) => {
                     <h4>{movie.movie.pizza}</h4>
                 </div>
                 <div className="four">
-                    <button disabled={isGood} onClick={thumbsUp} className={(isGood ? "good" : isBad === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-up-outline"></ion-icon></button>
-                    <button disabled={isBad} onClick={thumbsDown} className={(isBad ? "bad" : isGood === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-down-outline"></ion-icon></button>
+                    <button id="thumbsup" disabled={isGood} onClick={thumbsUp} className={(isGood ? "good" : isBad === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-up-outline"></ion-icon></button>
+                    <button id="thumbsdown" disabled={isBad} onClick={thumbsDown} className={(isBad ? "bad" : isGood === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-down-outline"></ion-icon></button>
                     <button onClick={deletePrevPair}><ion-icon name="trash-outline"></ion-icon></button>
                 </div>
             </div>

@@ -31,19 +31,12 @@
 
 button.good {
     background-color: green;
+    pointer-events: none;
 }
-
-button.good:hover {
-    background-color: green;
-}
-
 
 button.bad {
     background-color: red;
-}
-
-button.bad:hover {
-    background-color: red;
+    pointer-events: none;
 }
 
 #pairing-cards button.hide {
