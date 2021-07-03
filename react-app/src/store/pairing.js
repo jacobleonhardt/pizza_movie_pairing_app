@@ -77,7 +77,7 @@ export default function pairingReducer(state = initialState, action) {
             newState = [{...action.payload}, ...state]
             return newState;
         case REMOVE_PAIR:
-            newState = initialState
+            newState = [...action.payload]
             return newState;
         case RESET_PAIR:
             newState = initialState
