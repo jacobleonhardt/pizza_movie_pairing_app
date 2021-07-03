@@ -16,7 +16,7 @@ const PrevPairingCard = (movie) => {
     let isGood;
     let isBad;
 
-    if (review["0"].good == true) {
+    if (review.length > 0 && review["0"].good == true) {
         isGood = true
     } else {
         isBad = true
