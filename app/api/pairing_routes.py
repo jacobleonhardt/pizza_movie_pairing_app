@@ -21,7 +21,10 @@ def deletePair(pairId):
     info = request.get_json()
     pair = Pairing.query.filter(Pairing.id == pairId).first()
     review = Review.query.filter(Review.pairing_id == pairId).first()
-    db.session.delete(review)
+
+    if review:
+        db.session.delete(review)
+
     db.session.delete(pair)
     db.session.commit()
 
