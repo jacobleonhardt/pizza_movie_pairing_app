@@ -14,7 +14,7 @@ const Footer = () => {
                 <p>This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
             </div>
             <div className="bottom">
-                <p>©2021, pieflix | Site by Jacob Leonhardt <a href="https://github.com/jacobleonhardt" target="_blank"><ion-icon name="logo-github"></ion-icon></a><a href="https://www.linkedin.com/feed/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></p>
+                <p>©2021, pieflix | Site by Jacob Leonhardt <a href="https://github.com/jacobleonhardt" target="_blank"><ion-icon name="logo-github"></ion-icon></a><a href="https://www.linkedin.com/in/jacob-leonhardt-b19067ba/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></p>
             </div>
         </footer>
     )

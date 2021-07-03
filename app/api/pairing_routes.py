@@ -33,10 +33,22 @@ def deletePair(pairId):
     return jsonify(prev_list)
 
 
-@pairing_routes.route('/new/<int:userId>/dominos')
+@pairing_routes.route('/new/<int:userId>/<pizzaPlace>')
 @login_required
-def pairing(userId):
-    req = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=d4b83eae239cd5168bcdc521eeea13b6&include_adult=false&language=en-US&certification=PG-13&with_genres=28")
+def pairing(userId, pizzaPlace):
+    if pizzaPlace == 'dominos':
+        pizza_selection = "Domino's Pizza"
+        req = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=d4b83eae239cd5168bcdc521eeea13b6&include_adult=false&language=en-US&page=5&release_date.gte=01011980&certification=PG-13&with_genres=28")
+
+    if pizzaPlace == 'little-caesars':
+        pizza_selection = "Little Caesars Pizza"
+        req = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=d4b83eae239cd5168bcdc521eeea13b6&include_adult=false&language=en-US&page=5&release_date.gte=01011980&certification=PG-13&with_genres=35")
+
+    if pizzaPlace == 'papa-johns':
+        pizza_selection = "Papa John's Pizza"
+        req = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=d4b83eae239cd5168bcdc521eeea13b6&include_adult=false&language=en-US&page=5&release_date.gte=01011980&certification=PG-13&with_genres=28")
+
+
     response = req.json();
     results = response["results"];
     prev = Pairing.query.filter(Pairing.user_id == userId).all()
@@ -50,7 +62,7 @@ def pairing(userId):
 
     pairing = Pairing(
         user_id=userId,
-        pizza="Domino's Pizza",
+        pizza=pizza_selection,
         title=movie["title"],
         release_date=movie["release_date"],
         genre=movie["genre_ids"],
