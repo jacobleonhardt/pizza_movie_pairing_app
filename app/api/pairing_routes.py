@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Pairing
+from app.models import db, Pairing, Review
 import requests
 import random
 
@@ -20,6 +20,8 @@ def getPrePairings(userId):
 def deletePair(pairId):
     info = request.get_json()
     pair = Pairing.query.filter(Pairing.id == pairId).first()
+    review = Review.query.filter(Review.pairing_id == pairId).first()
+    db.session.delete(review)
     db.session.delete(pair)
     db.session.commit()
 

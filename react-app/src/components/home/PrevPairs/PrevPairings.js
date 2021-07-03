@@ -13,12 +13,13 @@ const PrevPairingCard = (movie) => {
         if (review.pairing_id == movie.movie.id) return review
     })
 
-    let isGood;
-    let isBad;
+    let isGood = undefined;
+    let isBad = undefined;
 
     if (review.length > 0 && review["0"].good == true) {
         isGood = true
-    } else {
+    }
+    if (review.length > 0 && review["0"].good == false) {
         isBad = true
     }
 
@@ -47,8 +48,8 @@ const PrevPairingCard = (movie) => {
                     <h4>{movie.movie.pizza}</h4>
                 </div>
                 <div className="four">
-                    <button disabled={isGood} onClick={thumbsUp} className={(isGood ? "good" : "hide")}><ion-icon name="thumbs-up-outline"></ion-icon></button>
-                    <button disabled={isBad} onClick={thumbsDown} className={(isGood ? "hide" : "bad")}><ion-icon name="thumbs-down-outline"></ion-icon></button>
+                    <button disabled={isGood} onClick={thumbsUp} className={(isGood ? "good" : isBad === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-up-outline"></ion-icon></button>
+                    <button disabled={isBad} onClick={thumbsDown} className={(isBad ? "bad" : isGood === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-down-outline"></ion-icon></button>
                     <button onClick={deletePrevPair}><ion-icon name="trash-outline"></ion-icon></button>
                 </div>
             </div>
