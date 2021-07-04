@@ -1,3 +1,4 @@
+import os
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import db, Pairing, Review
@@ -6,6 +7,7 @@ import random
 
 pairing_routes = Blueprint('pair', __name__)
 
+API = os.environ.get('TMDB_API')
 
 @pairing_routes.route('/<int:userId>')
 @login_required
@@ -38,31 +40,31 @@ def deletePair(pairId):
 def pairing(userId, pizzaPlace):
     if pizzaPlace == 'dominos':
         pizza_selection = "Domino's Pizza"
-        req = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=d4b83eae239cd5168bcdc521eeea13b6&include_adult=false&language=en-US&page=7&release_date.gte=01011980&certification.lte=PG-13&with_genres=12")
+        req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&language=en-US&page=7&release_date.gte=01011980&certification.lte=PG-13&with_genres=12")
 
     if pizzaPlace == 'donatos':
         pizza_selection = "Donatos Pizza"
-        req = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=d4b83eae239cd5168bcdc521eeea13b6&include_adult=false&language=en-US&page=7release_date.gte=01011940&certification.lte=PG-13&with_genres=18&without_genres=10749,16")
+        req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&language=en-US&page=7release_date.gte=01011940&certification.lte=PG-13&with_genres=18&without_genres=10749,16")
 
     if pizzaPlace == 'giordanos':
         pizza_selection = "Giordano's"
-        req = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=d4b83eae239cd5168bcdc521eeea13b6&include_adult=false&language=en-US&page=7&release_date.lte=12311999&certification.lte=R&without_genres=10749,16,99,27,10770,10751")
+        req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&language=en-US&page=7&release_date.lte=12311999&certification.lte=R&without_genres=10749,16,99,27,10770,10751")
 
     if pizzaPlace == 'little-caesars':
         pizza_selection = "Little Caesars Pizza"
-        req = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=d4b83eae239cd5168bcdc521eeea13b6&include_adult=false&language=en-US&page=7&release_date.gte=01011950&certification.lte=PG&with_genres=35")
+        req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&language=en-US&page=7&release_date.gte=01011950&certification.lte=PG&with_genres=35")
 
     if pizzaPlace == 'mellow-mushroom':
         pizza_selection = "Mellow Mushroom"
-        req = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=d4b83eae239cd5168bcdc521eeea13b6&include_adult=false&language=en-US&page=7&release_date.gte=01011980&certification=PG-13&with_genres=14")
+        req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&language=en-US&page=7&release_date.gte=01011980&certification=PG-13&with_genres=14")
 
     if pizzaPlace == 'papa-johns':
         pizza_selection = "Papa John's Pizza"
-        req = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=d4b83eae239cd5168bcdc521eeea13b6&include_adult=false&language=en-US&page=7&release_date.gte=01011935&certification=R&with_genres=10752&without_genres=10749,16")
+        req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&language=en-US&page=7&release_date.gte=01011935&certification=R&with_genres=10752&without_genres=10749,16")
 
     if pizzaPlace == 'pizza-hut':
         pizza_selection = "Pizza Hut"
-        req = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=d4b83eae239cd5168bcdc521eeea13b6&include_adult=false&language=en-US&page=7&release_date.gte=01011980&certification=PG-13&with_genres=28")
+        req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&language=en-US&page=7&release_date.gte=01011980&certification=PG-13&with_genres=28")
 
 
     response = req.json();
