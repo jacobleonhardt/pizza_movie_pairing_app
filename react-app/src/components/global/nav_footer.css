@@ -49,7 +49,11 @@ nav .right a {
     padding: 0 10px;
 }
 
-
+@media screen and (max-width: 768px) {
+    nav .right {
+        margin: 0;
+    }
+}
 
 /* Footer */
 footer {
@@ -97,6 +101,7 @@ footer img {
 @media screen and (max-width: 768px) {
     footer {
         display: block;
+        padding: 5% 0;
     }
 
     footer .left {
