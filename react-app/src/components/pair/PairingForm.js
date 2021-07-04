@@ -6,7 +6,7 @@ import './pairingform.css'
 const PairingForm = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
-    const [pizzaPlace, setPizzaPlace] = useState("dominos");
+    const [pizzaPlace, setPizzaPlace] = useState("");
     const [condition, setCondition] = useState(false)
     const selection = useSelector(state => state.pairing)
     const movie = selection[0];
@@ -41,6 +41,7 @@ const PairingForm = () => {
                 <form onSubmit={apiCall}>
                     <label htmlFor="pizzaPlace">Pizza Place</label>
                     <select value={pizzaPlace} onChange={(e => setPizzaPlace(e.target.value))}>
+                        <option value="" disabled>Select a Pizza Place</option>
                         <option value="dominos">Domino's Pizza</option>
                         <option value="donatos">Donatos Pizza</option>
                         <option value="giordanos">Giordano's</option>
