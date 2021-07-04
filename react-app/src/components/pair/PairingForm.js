@@ -32,6 +32,8 @@ const PairingForm = () => {
                     <h2>{movie.title}</h2>
                     <h5>({movie.release_date ? movie.release_date.slice(0,4) : 'Unknown'})</h5>
                     <p>{movie.plot}</p>
+                    <br/>
+                    <button onClick={apiCall} className="button-link-alt">Not Feeling It?</button>
                 </div>
             </div> :
             <div id="pairing-form" className="solid-block">
