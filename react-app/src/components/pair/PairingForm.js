@@ -41,6 +41,7 @@ const PairingForm = () => {
                     <select value={pizzaPlace} onChange={(e => setPizzaPlace(e.target.value))}>
                         <option value="dominos">Domino's Pizza</option>
                         <option value="donatos">Donatos Pizza</option>
+                        <option value="giordanos">Giordano's</option>
                         <option value="little-caesars">Little Caesars Pizza</option>
                         <option value="mellow-mushroom">Mellow Mushroom</option>
                         <option value="papa-johns">Papa John's Pizza</option>
