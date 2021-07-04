@@ -14,11 +14,13 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
+    setErrors([]);
     const data = dispatch(login(email, password));
     if (data.errors) {
       setErrors(data.errors);
+    } else {
+      history.push(`/`)
     }
-    history.push(`/`)
   };
 
   const updateEmail = (e) => {
@@ -29,17 +31,18 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to={`/`} />;
-  }
+  // if (user) {
+  //   return <Redirect to={`/`} />;
+  // }
 
   const demo = (e) => {
     e.preventDefault();
     const data = dispatch(loginDemo());
     if (data.errors) {
       setErrors(data.errors);
+    } else {
+      history.push(`/`)
     }
-    history.push(`/`)
   };
 
 
@@ -48,9 +51,9 @@ const LoginForm = () => {
     <h2>Welcome Back</h2>
     <form onSubmit={onLogin}>
       <div>
-        {errors.map((error) => (
+        {errors.length > 0 ? errors.map((error) => (
           <div>{error}</div>
-        ))}
+        )) : <></>}
       </div>
       <div>
         <label htmlFor="email">Email</label>
