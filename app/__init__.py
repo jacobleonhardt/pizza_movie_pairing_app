@@ -70,6 +70,7 @@ def inject_csrf_token(response):
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
+@app.route('/favicon.ico')
 def react_root(path):
     print("path", path)
     if path == 'favicon.ico':
