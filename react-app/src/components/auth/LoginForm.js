@@ -15,7 +15,7 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     setErrors([]);
-    const data = dispatch(login(email, password));
+    const data = await dispatch(login(email, password));
     if (data.errors) {
       setErrors(data.errors);
     } else {
@@ -35,9 +35,9 @@ const LoginForm = () => {
     return <Redirect to={`/`} />;
   }
 
-  const demo = (e) => {
+  const demo = async (e) => {
     e.preventDefault();
-    const data = dispatch(loginDemo());
+    const data = await dispatch(loginDemo());
     if (data.errors) {
       setErrors(data.errors);
     } else {
@@ -50,9 +50,9 @@ const LoginForm = () => {
     <div class="form-container">
     <h2>Welcome Back</h2>
     <form onSubmit={onLogin}>
-      <div>
+      <div className="form-errors">
         {errors.length > 0 ? errors.map((error) => (
-          <div>{error}</div>
+          <div className="error">{error}</div>
         )) : <></>}
       </div>
       <div>
