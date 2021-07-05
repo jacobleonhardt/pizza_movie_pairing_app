@@ -80,6 +80,9 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    existing_user = User.query.filter(User.email == form.data["email"]);
+    if existing_user:
+        return {'error': validation_errors_to_error_messages("User already exists.")}, 409
     if form.validate_on_submit():
         user = User(
             username=form.data['username'],
