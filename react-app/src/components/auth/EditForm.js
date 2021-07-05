@@ -14,13 +14,19 @@ const EditForm = () => {
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const updateAccount = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(updateUser(user.id, username, email, password));
+
+      if (data.errors) {
+        setErrors(data.errors);
+      } else {
+        history.push('/')
+      }
     }
-    return history.push('/');
   };
 
   const updateUsername = (e) => {
@@ -51,6 +57,12 @@ const deleteAccount = async(e) => {
     <div class="form-container">
     <h2>Update Account</h2>
     <form onSubmit={updateAccount}>
+    {errors.length > 0 ?
+      <div className="form-errors">
+         {errors.map((error) => (
+          <div className="error">{error}</div>
+        ))}
+      </div> : <></>}
       <div>
         <label>User Name</label>
         <input
