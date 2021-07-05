@@ -1,22 +1,33 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import "./auth.css";
 
 const SignUpForm = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
+
+      if (data.errors) {
+        setErrors(data.errors);
+      } else {
+        history.push(`/`)
+      }
+    } else {
+      setErrors('Please fill out the form.')
     }
+
   };
 
   const updateUsername = (e) => {
@@ -43,6 +54,12 @@ const SignUpForm = () => {
     <div class="form-container">
     <h2>Welcome to pieflix</h2>
     <form onSubmit={onSignUp}>
+      {errors.length > 0 ?
+      <div className="form-errors">
+         {errors.map((error) => (
+          <div className="error">{error}</div>
+        ))}
+      </div> : <></>}
       <div>
         <label>User Name</label>
         <input
