@@ -27,7 +27,7 @@ function User() {
     })();
       dispatch(getPairs(userId))
       dispatch(getPastReviews(userId))
-  }, []);
+  }, [dispatch]);
 
   if (!user) {
     return null;

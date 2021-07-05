@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { login, loginDemo } from "../../store/session";
@@ -31,9 +31,9 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  // if (user) {
-  //   return <Redirect to={`/`} />;
-  // }
+  if (user) {
+    return <Redirect to={`/`} />;
+  }
 
   const demo = (e) => {
     e.preventDefault();
