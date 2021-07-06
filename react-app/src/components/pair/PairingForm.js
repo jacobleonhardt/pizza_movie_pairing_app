@@ -17,7 +17,8 @@ const PairingForm = () => {
         setCondition(true)
         return pair;
     }
-
+// Removing previous pair and querying a new movie.
+// "Actually, it's super easy, barely an inconvenience.""
     const notFeelingIt = async (e) => {
         e.preventDefault();
         dispatch(deletePair(user.id, movie.id))
