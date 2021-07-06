@@ -47,9 +47,9 @@ const EditForm = () => {
 
 const deleteAccount = async(e) => {
   e.preventDefault();
-  dispatch(deleteUser(user.id))
-  await dispatch(resetPrevPairs())
   await dispatch(resetUserReviews())
+  await dispatch(resetPrevPairs())
+  await dispatch(deleteUser(user.id))
   return history.push('/')
 }
 
