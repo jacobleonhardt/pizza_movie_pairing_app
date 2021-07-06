@@ -46,22 +46,14 @@ def login():
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@auth_routes.route('/login/demo', methods=['POST'])
+@auth_routes.route('/login/demo', methods=["POST"])
 def loginDemo():
-    """
-    Logs user in as Demo user
-    """
     form = LoginForm()
     print(request.get_json())
-    # Get the csrf_token from the request cookie and put it into the
-    # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
-    # if form.validate_on_submit():
-        # Add the user to the session, we are logged in!
     user = User.query.filter(User.email == "demo@aa.io").first()
     login_user(user)
     return user.to_dict()
-    # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @auth_routes.route('/logout')
@@ -96,36 +88,30 @@ def sign_up():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@auth_routes.route('/update/<int:userId>', methods=['PATCH', 'PUT'])
+@auth_routes.route('/update/<int:userId>', methods=["PATCH", "PUT"])
 def update_user(userId):
     """
     Edit/Update a current user
     """
     form = UpdateUser()
     print(request.get_json())
-    # Get the csrf_token from the request cookie and put it into the
-    # form manually to validate_on_submit can be used
+
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        # Add the user to the session, we are logged in!
         user = User.query.filter(User.id == userId).first()
-        user.username=form.data['username']
-        user.email=form.data['email']
-        if form.data["password"]:
-            user.password=form.data['password']
+        user.username = form.data['username']
+        user.email = form.data['email']
+        if form.data['password']:
+            user.password = form.data['password']
 
         db.session.commit()
 
         return user.to_dict()
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-
-
-@auth_routes.route('/delete/<int:userId>', methods=['DELETE'])
+@auth_routes.route('/delete/<int:userId>', methods=["DELETE"])
 def delete(userId):
-    """
-    Logs a user in
-    """
     print(request.get_json())
 
     user = User.query.filter(User.id == userId).first()

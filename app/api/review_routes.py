@@ -4,7 +4,6 @@ from app.models import db, Review
 
 review_routes = Blueprint('reviews', __name__)
 
-
 @review_routes.route('/<int:userId>')
 @login_required
 def getReviews(userId):

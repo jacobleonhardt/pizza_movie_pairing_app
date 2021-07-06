@@ -48,21 +48,23 @@ export const login = (email, password) => async (dispatch) => {
 
 export const loginDemo = () => async (dispatch) => {
     const response = await fetch('/api/auth/login/demo', {
-        method: 'POST',
+        method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            email: "demo@aa.io",
-            password: "password"
+            email: 'demo@aa.io',
+            password: 'password'
         })
     });
-    const data = await response.json();
+
+    const data = await response.json()
     if (data.errors) {
         return data;
     }
+
     dispatch(setUser(data))
-    return data
+    return data;
 }
 
 export const logout = () => async (dispatch) => {
@@ -71,7 +73,7 @@ export const logout = () => async (dispatch) => {
             "Content-Type": "application/json",
         }
     });
-    const data = await response.json();
+    // const data = await response.json();
     dispatch(removeUser());
 };
 
@@ -96,43 +98,44 @@ export const signUp = (username, email, password) => async (dispatch) => {
     return {};
 }
 
-export const updateUser = (userId, username, email, password) => async (dispatch) => {
+export const updateUser = (userId, username, email, password) => async(dispatch) => {
     let response;
     if (password === '') {
-          response = await fetch(`/api/auth/update/${userId}`, {
-              method: "PATCH",
-          headers: {
-             "Content-Type": "application/json",
-         },
-         body: JSON.stringify({
-              username,
-                email,
+        response = await fetch(`/api/auth/update/${userId}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username,
+                email
             }),
         });
     } else {
         response = await fetch(`/api/auth/update/${userId}`, {
-            method: "PUT",
-        headers: {
-           "Content-Type": "application/json",
-       },
-       body: JSON.stringify({
-            username,
-              email,
-              password,
-          }),
-      });
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username,
+                email,
+                password
+            }),
+        });
     }
 
     const data = await response.json();
     if (data.errors) {
         return data;
     }
+
     dispatch(setUser(data))
-    return {};
+    return data;
 }
 
 export const deleteUser = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/auth/delete/${userId}`, {
+    await fetch(`/api/auth/delete/${userId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -141,11 +144,12 @@ export const deleteUser = (userId) => async (dispatch) => {
             id: userId
         })
     });
-    const data = await response.json();
+
+    // const data = await resposne.json()
     dispatch(removeUser());
-};
+}
 
-
+// Reducer
 const initialState = {user: null}
 
 export default function reducer(state = initialState, action) {

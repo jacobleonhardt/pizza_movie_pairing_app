@@ -98,7 +98,7 @@ export default function pairingReducer(state = initialState, action) {
             newState = [...action.payload]
             return newState;
         case RESET_PAIR:
-            newState = initialState
+            newState = initialState;
             return newState;
         default:
             return state;

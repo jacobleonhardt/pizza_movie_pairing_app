@@ -44,7 +44,7 @@ def pairing(userId, pizzaPlace):
 
     if pizzaPlace == 'donatos':
         pizza_selection = "Donatos Pizza"
-        req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&original_language=en-US&certification_country=US&release_date.gte=01011940&certification.lte=PG-13&vote_average.gte=7&with_genres=18|9648&without_genres=10749,16,28,10770")
+        req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&original_language=en-US&certification_country=US&release_date.gte=01011940&certification.lte=PG-13&vote_average.gte=7&with_genres=18|9648|80&without_genres=10749,16,28,10770")
 
     if pizzaPlace == 'giordanos':
         pizza_selection = "Giordano's"
