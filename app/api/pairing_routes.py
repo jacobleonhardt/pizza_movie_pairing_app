@@ -81,7 +81,6 @@ def pairing(userId, pizzaPlace):
         if movie["title"] not in prev_selections:
             possible_selections.append(movie)
 
-    print('#####################', results)
     movie = random.choice(possible_selections);
 
     pairing = Pairing(

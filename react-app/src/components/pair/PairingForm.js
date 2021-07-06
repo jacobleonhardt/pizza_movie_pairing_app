@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { makeCall } from '../../store/pairing';
+import { makeCall, deletePair } from '../../store/pairing';
 import './pairingform.css'
 
 const PairingForm = () => {
@@ -13,6 +13,14 @@ const PairingForm = () => {
 
     const apiCall = async (e) => {
         e.preventDefault();
+        const pair = await dispatch(makeCall(user.id, pizzaPlace))
+        setCondition(true)
+        return pair;
+    }
+
+    const notFeelingIt = async (e) => {
+        e.preventDefault();
+        dispatch(deletePair(user.id, movie.id))
         const pair = await dispatch(makeCall(user.id, pizzaPlace))
         setCondition(true)
         return pair;
@@ -33,7 +41,7 @@ const PairingForm = () => {
                     <h5>({movie.release_date ? movie.release_date.slice(0,4) : 'Unknown'})</h5>
                     <p>{movie.plot}</p>
                     <br/>
-                    <button onClick={apiCall} className="button-link-alt">Not Feeling It?</button>
+                    <button onClick={notFeelingIt} className="button-link-alt">Not Feeling It?</button>
                 </div>
             </div> :
             <div id="pairing-form" className="solid-block">
