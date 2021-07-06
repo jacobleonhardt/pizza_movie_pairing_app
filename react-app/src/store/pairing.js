@@ -43,6 +43,24 @@ export const makeCall = (userId, pizzaPlace) => async(dispatch) => {
     return movie;
 };
 
+export const makeDiffCall = (userId, pizzaPlace, pairId) => async(dispatch) => {
+
+    const response = await fetch(`/api/pair/new/${userId}/${pizzaPlace}`);
+    const movie = await response.json()
+    await fetch(`/api/pair/delete/${pairId}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userId,
+            pairId
+        })
+    });
+    dispatch(makePair(movie))
+    return movie;
+};
+
 export const deletePair = (userId, pairId) => async(dispatch) => {
     const response = await fetch(`/api/pair/delete/${pairId}`, {
         method: "DELETE",

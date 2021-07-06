@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { makeCall, deletePair } from '../../store/pairing';
+import { makeCall, makeDiffCall } from '../../store/pairing';
 import './pairingform.css'
 
 const PairingForm = () => {
@@ -21,10 +21,8 @@ const PairingForm = () => {
 // "Actually, it's super easy, barely an inconvenience.""
     const notFeelingIt = async (e) => {
         e.preventDefault();
-        dispatch(deletePair(user.id, movie.id))
-        const pair = await dispatch(makeCall(user.id, pizzaPlace))
-        setCondition(true)
-        return pair;
+        const newPair = await dispatch(makeDiffCall(user.id, pizzaPlace, movie.id))
+        return newPair;
     }
 
     return(
