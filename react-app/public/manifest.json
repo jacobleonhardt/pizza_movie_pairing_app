@@ -1,6 +1,6 @@
 {
-    "short_name": "React Template",
-    "name": "Create React App Template",
+    "short_name": "pieflix",
+    "name": "pieflix",
     "start_url": ".",
     "display": "standalone",
     "color": "#000000",
