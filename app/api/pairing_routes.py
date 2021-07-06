@@ -76,7 +76,7 @@ def pairing(userId, pizzaPlace):
     prev_selections = []
 
     for pair in prev:
-            prev_selections.append(pair.title)
+        prev_selections.append(pair.title)
 
     possible_selections = []
 
