@@ -1,6 +1,6 @@
 #pairing-cards.solid-block{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
     align-items: center;
     grid-column-gap: 15px;
     max-width: 1000px;
@@ -8,7 +8,11 @@
     margin-bottom: 2%;
 }
 
-#pairing-cards .four {
+#pairing-cards .third h4{
+    text-align: center;
+}
+
+#pairing-cards .forth {
     font-size: 32px;
 }
 
@@ -43,7 +47,7 @@ button.bad {
     display: none;
 }
 
-@media screen and (max-width: 997px) {
+@media screen and (max-width: 1153px) {
     #pairing-cards button {
         display: block;
         margin: 5%;
