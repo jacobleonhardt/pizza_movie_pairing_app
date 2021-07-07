@@ -110,10 +110,21 @@ def reversePairing(userId, movieTitle, movieYear):
     response = req.json();
     results = response["results"];
     chosen_movie = results[0]
+    pizza_selection = ''
 
-    chosen_movie["genre_ids"]
-
-
+    for genre in chosen_movie["genre_ids"]:
+        if genre == 12:
+            pizza_selection = "Domino's Pizza"
+        elif genre == 14:
+            pizza_selection = "Mellow Mushroom"
+        elif genre == 28 or 878 or 53:
+            pizza_selection = "Pizza Hut"
+        elif genre == 10752 or 37 or 36:
+            pizza_selection = "Papa John's Pizza"
+        elif genre == 18:
+            pizza_selection = "Donatos Pizza"
+        else:
+            pizza_selection = "Little Caesars Pizza"
 
     pairing = Pairing(
         user_id=userId,
@@ -128,4 +139,4 @@ def reversePairing(userId, movieTitle, movieYear):
     db.session.add(pairing)
     db.session.commit()
 
-    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', chosen_movie["genre_ids"])
+    return pairing.to_dict()

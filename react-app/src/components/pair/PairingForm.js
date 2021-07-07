@@ -60,6 +60,7 @@ const PairingForm = () => {
                     <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} alt={`${movie.title} movie poster`} />
                 </div>
                 <div className="right">
+                    <h2>{movie.pizza_selection}</h2>
                     <h2>{movie.title}</h2>
                     <h5>({movie.release_date ? movie.release_date.slice(0,4) : 'Unknown'})</h5>
                     <p>{movie.plot}</p>
