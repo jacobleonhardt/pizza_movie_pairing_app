@@ -1,6 +1,6 @@
 .pairing-cards.solid-block{
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr 1fr 1fr;
     align-items: center;
     grid-column-gap: 15px;
     max-width: 1200px;
@@ -43,22 +43,9 @@
     margin: 2%;
 }
 
-button.good {
-    background-color: green;
-    pointer-events: none;
-}
-
-button.bad {
-    background-color: red;
-    pointer-events: none;
-}
-
-.pairing-cards button.hide {
-    display: none;
-}
-
+/* Social Share Icons */
 .forth button.react-share__ShareButton {
-
+    max-height: 42px;
 }
 
 .forth button.react-share__ShareButton:hover {
@@ -73,10 +60,26 @@ button.bad {
 .forth ion-icon.md.hydrated:hover {
     background: linear-gradient(to right, #B71C02, #ECB906);
 }
+
+/* Review Buttons */
+button.good {
+    background-color: green;
+    pointer-events: none;
+}
+
+button.bad {
+    background-color: red;
+    pointer-events: none;
+}
+
+.pairing-cards button.hide {
+    display: none;
+}
+
+/* Responsive Style */
 @media screen and (max-width: 1153px) {
     .pairing-cards button {
         display: block;
-        margin: 5%;
     }
 }
 
