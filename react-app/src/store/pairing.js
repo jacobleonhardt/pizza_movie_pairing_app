@@ -1,6 +1,7 @@
 // constants
 const GET_PAIR = "pairing/GET_PAIR"
 const MAKE_PAIR = "pairing/MAKE_PAIR"
+const MAKE_PIZZA_PAIR = "pairing/MAKE_PIZZA_PAIR"
 const REMOVE_PAIR = "pairing/REMOVE_PAIR"
 const RESET_PAIR = "pairing/RESET_PAIR"
 
@@ -13,6 +14,11 @@ const getPair = (list) => ({
 const makePair = (movie) => ({
     type: MAKE_PAIR,
     payload: movie
+})
+
+const makePizzaPair = (pizza) => ({
+    type: MAKE_PIZZA_PAIR,
+    payload: pizza
 })
 
 const removePair = (list) => ({
@@ -42,6 +48,15 @@ export const makeCall = (userId, pizzaPlace) => async(dispatch) => {
     dispatch(makePair(movie))
     return movie;
 };
+
+export const makePizzaCall = (userId, movieTitle, movieYear) => async(dispatch) => {
+
+    const response = await fetch(`/api/pair/new/${userId}/${movieTitle}/${movieYear}`);
+    const pizza = await response.json()
+
+    dispatch(makePizzaPair(pizza))
+    return pizza;
+}
 
 export const makeDiffCall = (userId, pizzaPlace, pairId) => async(dispatch) => {
 
@@ -92,6 +107,9 @@ export default function pairingReducer(state = initialState, action) {
             newState = [...action.payload]
             return newState;
         case MAKE_PAIR:
+            newState = [{...action.payload}, ...state]
+            return newState;
+        case MAKE_PIZZA_PAIR:
             newState = [{...action.payload}, ...state]
             return newState;
         case REMOVE_PAIR:

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { makeCall, makeDiffCall } from '../../store/pairing';
+import { makeCall, makePizzaCall, makeDiffCall } from '../../store/pairing';
 import './pairingform.css'
 
 const PairingForm = () => {
@@ -8,15 +8,40 @@ const PairingForm = () => {
     const user = useSelector(state => state.session.user)
     const [pizzaPlace, setPizzaPlace] = useState("");
     const [condition, setCondition] = useState(false)
+    const [formType, setFormType] = useState(true)
+    const [movieTitle, setMovieTitle] = useState("")
+    const [movieYear, setMovieYear] = useState("")
     const selection = useSelector(state => state.pairing)
     const movie = selection[0];
 
-    const apiCall = async (e) => {
+
+    const updateFormType = (e) => {
+        e.preventDefault();
+        setFormType(!formType)
+    }
+
+    const updateMovieTitle = (e) => {
+        setMovieTitle(e.target.value)
+    };
+
+    const updateMovieYear = (e) => {
+        setMovieYear(e.target.value)
+    };
+
+    const movieCall = async (e) => {
         e.preventDefault();
         const pair = await dispatch(makeCall(user.id, pizzaPlace))
         setCondition(true)
         return pair;
     }
+
+    const pizzaCall = async (e) => {
+        e.preventDefault();
+        const movie = await dispatch(makePizzaCall(user.id, movieTitle, movieYear))
+        setCondition(true)
+        return movie;
+    }
+
 // Removing previous pair and querying a new movie.
 // "Actually, it's super easy, barely an inconvenience.""
     const notFeelingIt = async (e) => {
@@ -36,16 +61,20 @@ const PairingForm = () => {
                     <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} alt={`${movie.title} movie poster`} />
                 </div>
                 <div className="right">
+                    <h2>{movie.pizza}</h2>
                     <h2>{movie.title}</h2>
                     <h5>({movie.release_date ? movie.release_date.slice(0,4) : 'Unknown'})</h5>
                     <p>{movie.plot}</p>
                     <br/>
-                    <button onClick={notFeelingIt} className="button-link-alt">Not Feeling It?</button>
+                    { formType ? <button onClick={notFeelingIt} className="button-link-alt">Not Feeling It?</button> : <></> }
                 </div>
             </div> :
             <div id="pairing-form" className="solid-block">
-                <h3>Pick a Pizza Place</h3>
-                <form onSubmit={apiCall}>
+                {formType ?
+                <>
+                <button className='alternate-search' onClick={updateFormType}>Search by Movie</button>
+                <h3>Where are we eating?</h3>
+                <form onSubmit={movieCall}>
                     <label htmlFor="pizzaPlace">Pizza Place</label>
                     <select value={pizzaPlace} onChange={(e => setPizzaPlace(e.target.value))}>
                         <option value="" disabled>Select a Pizza Place</option>
@@ -59,6 +88,28 @@ const PairingForm = () => {
                     </select>
                     <button className="button-link-alt">Find a Film</button>
                 </form>
+                </>
+                :
+                <>
+                <button className='alternate-search' onClick={updateFormType}>Search by Pizza</button>
+                <h3>What are we watching tonight?</h3>
+                <form onSubmit={pizzaCall}>
+                    <label htmlFor="movieTitle">Movie Title</label>
+                    <input
+                        type="text"
+                        placeholder="What's it called?"
+                        value={movieTitle}
+                        onChange={updateMovieTitle}
+                        />
+                    <input
+                        type="text"
+                        placeholder="When did it come out?"
+                        value={movieYear}
+                        onChange={updateMovieYear}
+                        />
+                    <button className="button-link-alt">Pick a Pizza</button>
+                </form>
+                </>}
             </div>}
         </div>
     )
