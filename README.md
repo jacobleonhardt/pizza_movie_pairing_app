@@ -1,6 +1,6 @@
 # pieflix
 
-## Stack
+## The Stack
 ### Backend
 * Python
 * Flask
