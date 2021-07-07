@@ -90,7 +90,8 @@ def pairing(userId, pizzaPlace):
         release_date=movie["release_date"],
         genre=movie["genre_ids"],
         plot=movie["overview"],
-        poster=movie["poster_path"]
+        poster=movie["poster_path"],
+        backdrop_path=movie["backdrop_path"]
     )
 
     db.session.add(pairing)
@@ -145,7 +146,8 @@ def reversePairing(userId, movieTitle, movieYear):
         release_date=chosen_movie["release_date"],
         genre=chosen_movie["genre_ids"],
         plot=chosen_movie["overview"],
-        poster=chosen_movie["poster_path"]
+        poster=chosen_movie["poster_path"],
+        backdrop_path=chosen_movie["backdrop_path"]
     )
 
     db.session.add(pairing)

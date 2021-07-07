@@ -3,6 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { deletePair } from "../../../store/pairing";
 import { newReview } from "../../../store/review";
 import "./prevpairings.css"
+import {
+    FacebookShareButton,
+    TwitterShareButton,
+    RedditShareButton,
+  } from "react-share";
 
 const PrevPairingCard = (movie) => {
     const dispatch = useDispatch()
@@ -37,7 +42,7 @@ const PrevPairingCard = (movie) => {
 
     return (
         <div className="previous-pairing">
-            <div id="pairing-cards" className="solid-block">
+            <div id={`${movie.movie.id}`} className="pairing-cards solid-block">
                 <div className="first">
                     <img src={`https://image.tmdb.org/t/p/w500${movie.movie.poster}`} />
                 </div>
@@ -48,6 +53,11 @@ const PrevPairingCard = (movie) => {
                     <h4>{movie.movie.pizza}</h4>
                 </div>
                 <div className="forth">
+                    <FacebookShareButton children={<ion-icon name="logo-facebook"></ion-icon>} url={`https://pieflix.herokuapp.com/`} quote={`${movie.movie.pizza} + ${movie.movie.title} (${movie.movie.release_date.slice(0,4)})`}/>
+                    <TwitterShareButton children={<ion-icon name="logo-twitter"></ion-icon>} url={`https://pieflix.herokuapp.com/`} quote={`${movie.movie.pizza} + ${movie.movie.title} (${movie.movie.release_date.slice(0,4)})`}/>
+                    <RedditShareButton children={<ion-icon name="logo-reddit"></ion-icon>} url={`https://pieflix.herokuapp.com/`} quote={`${movie.movie.pizza} + ${movie.movie.title} (${movie.movie.release_date.slice(0,4)})`}/>
+                </div>
+                <div className="fifth">
                     <button disabled={isGood} onClick={thumbsUp} className={(isGood ? "good" : isBad === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-up-outline"></ion-icon></button>
                     <button disabled={isBad} onClick={thumbsDown} className={(isBad ? "bad" : isGood === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-down-outline"></ion-icon></button>
                     <button onClick={deletePrevPair}><ion-icon name="trash-outline"></ion-icon></button>

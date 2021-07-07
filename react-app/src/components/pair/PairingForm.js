@@ -14,7 +14,6 @@ const PairingForm = () => {
     const selection = useSelector(state => state.pairing)
     const movie = selection[0];
 
-
     const updateFormType = (e) => {
         e.preventDefault();
         setFormType(!formType)
@@ -61,7 +60,7 @@ const PairingForm = () => {
                 { formType ? <h2>Find a Film</h2> : <h2>Pick a Pizza</h2>}
             </div>
             { condition ?
-            <div id="pairing-display" className="solid-block" style={{background: condition ? `url(https://image.tmdb.org/t/p/w500${movie.poster})` : ''}}>
+            <div id="pairing-display" className={condition ? 'solid-block with-background' : 'solid-block'} style={{background: `linear-gradient(to bottom, rgba(129,4,4,.85), rgba(129,4,4,.85)), url(https://image.tmdb.org/t/p/w500${movie.backdrop_path})`}}>
                 { !movie.error ? <> <div className="left">
                     <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} alt={`${movie.title} movie poster`} />
                 </div>

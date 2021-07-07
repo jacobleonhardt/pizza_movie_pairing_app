@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: b39c0a26b633
-Revises: 
+Revises:
 Create Date: 2021-07-01 18:46:24.343672
 
 """
@@ -37,6 +37,7 @@ def upgrade():
     sa.Column('genre', sa.String(), nullable=True),
     sa.Column('plot', sa.String(), nullable=True),
     sa.Column('poster', sa.String(), nullable=True),
+    sa.Column('backdrop_path', sa.String(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

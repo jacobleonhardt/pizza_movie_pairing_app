@@ -1,38 +1,67 @@
-#pairing-cards.solid-block{
+.pairing-cards.solid-block{
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr 1fr 1fr;
     align-items: center;
     grid-column-gap: 15px;
-    max-width: 1000px;
+    max-width: 1200px;
     padding: 2%;
     margin-bottom: 2%;
 }
 
-#pairing-cards .third h4{
+.pairing-cards .third h4{
     text-align: center;
 }
 
-#pairing-cards .forth {
-    font-size: 32px;
+.pairing-cards .forth {
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#pairing-cards .first img {
+.pairing-cards .fifth {
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pairing-cards .first img {
     max-width: 150px;
 }
 
-#pairing-cards h4 {
-    font-size: 1.25em;
+.pairing-cards h4 {
+    font-size: 1.35em;
     font-weight: 300;;
     text-align: left;
     margin: 0 auto;
 }
 
-#pairing-cards button {
+.pairing-cards button {
     font-size: 21px;
     line-height: 1px;
     margin: 2%;
 }
 
+/* Social Share Icons */
+.forth button.react-share__ShareButton {
+    max-height: 42px;
+}
+
+.forth button.react-share__ShareButton:hover {
+    background: transparent;
+}
+
+.forth ion-icon.md.hydrated {
+    padding: 5px;
+    border: 2px solid #fff;
+    border-radius: 50px;
+}
+.forth ion-icon.md.hydrated:hover {
+    background: linear-gradient(to right, #B71C02, #ECB906);
+}
+
+/* Review Buttons */
 button.good {
     background-color: green;
     pointer-events: none;
@@ -43,31 +72,31 @@ button.bad {
     pointer-events: none;
 }
 
-#pairing-cards button.hide {
+.pairing-cards button.hide {
     display: none;
 }
 
+/* Responsive Style */
 @media screen and (max-width: 1153px) {
-    #pairing-cards button {
+    .pairing-cards button {
         display: block;
-        margin: 5%;
     }
 }
 
 @media screen and (max-width: 768px) {
-    #pairing-cards.solid-block{
+    .pairing-cards.solid-block{
         display: block;
         margin-bottom: 8%;
     }
 
-    #pairing-cards .first img {
+    .pairing-cards .first img {
         margin-bottom: 2%;
     }
 
-    #pairing-cards h4 {
+    .pairing-cards h4 {
         text-align: center;
     }
-    #pairing-cards button {
+    .pairing-cards button {
         margin: 2%;
         display: inline-block;
     }
