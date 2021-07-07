@@ -40,7 +40,7 @@ def deletePair(pairId):
 def pairing(userId, pizzaPlace):
     if pizzaPlace == 'dominos':
         pizza_selection = "Domino's Pizza"
-        req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&with_runtime.gte=60&original_language=en&release_date.gte=01011980&certification_country=US&certification.lte=PG-13&vote_average.gte=6&with_genres=12")
+        req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&with_runtime.gte=60&original_language=en&release_date.gte=01011980&certification_country=US&certification.lte=PG-13&with_genres=12")
 
     if pizzaPlace == 'donatos':
         pizza_selection = "Donatos Pizza"
@@ -97,3 +97,35 @@ def pairing(userId, pizzaPlace):
     db.session.commit()
 
     return pairing.to_dict()
+
+
+@pairing_routes.route('/new/<int:userId>/<movieTitle>/<int:movieYear>')
+@login_required
+def reversePairing(userId, movieTitle, movieYear):
+    split_title = movieTitle.split()
+    query_string = "+".join(split_title)
+    query_string.lower()
+    req = requests.get(f"https://api.themoviedb.org/3/search/movie?api_key={API}&query={query_string}&year={movieYear}")
+
+    response = req.json();
+    results = response["results"];
+    chosen_movie = results[0]
+
+    chosen_movie["genre_ids"]
+
+
+
+    pairing = Pairing(
+        user_id=userId,
+        pizza=pizza_selection,
+        title=chosen_movie["title"],
+        release_date=chosen_movie["release_date"],
+        genre=chosen_movie["genre_ids"],
+        plot=chosen_movie["overview"],
+        poster=chosen_movie["poster_path"]
+    )
+
+    db.session.add(pairing)
+    db.session.commit()
+
+    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', chosen_movie["genre_ids"])

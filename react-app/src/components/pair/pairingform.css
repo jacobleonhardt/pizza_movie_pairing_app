@@ -19,6 +19,20 @@
     display: none;
 }
 
+/* Form Selection Form Style */
+
+#pairing-form form#form-selection label {
+    display: flex;
+    align-items: center;
+}
+
+.radio-button {
+    display: inline-block;
+    margin: 0 2%;
+}
+
+
+
 /* Result Style */
 #pairing-display {
     display: flex;
