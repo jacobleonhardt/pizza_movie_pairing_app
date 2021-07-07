@@ -20,7 +20,6 @@
 }
 
 /* Form Selection Form Style */
-
 button.alternate-search {
     margin-left: 0px;
 }
@@ -45,7 +44,11 @@ button.alternate-search {
     margin: 0 2%;
 }
 
-
+@media screen and (max-width: 768px) {
+    #pairing-form input {
+        width: auto;
+    }
+}
 
 /* Result Style */
 #pairing-display {
