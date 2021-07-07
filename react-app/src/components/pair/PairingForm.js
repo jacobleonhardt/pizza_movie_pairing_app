@@ -66,13 +66,13 @@ const PairingForm = () => {
                     <h5>({movie.release_date ? movie.release_date.slice(0,4) : 'Unknown'})</h5>
                     <p>{movie.plot}</p>
                     <br/>
-                    <button onClick={notFeelingIt} className="button-link-alt">Not Feeling It?</button>
+                    { formType ? <button onClick={notFeelingIt} className="button-link-alt">Not Feeling It?</button> : <></> }
                 </div>
             </div> :
             <div id="pairing-form" className="solid-block">
                 {formType ?
                 <>
-                <button className='tabs' onClick={updateFormType}>Search by Movie</button>
+                <button className='alternate-search' onClick={updateFormType}>Search by Movie</button>
                 <h3>Where are we eating?</h3>
                 <form onSubmit={movieCall}>
                     <label htmlFor="pizzaPlace">Pizza Place</label>
@@ -91,13 +91,13 @@ const PairingForm = () => {
                 </>
                 :
                 <>
-                <button className='tabs' onClick={updateFormType}>Search by Pizza</button>
+                <button className='alternate-search' onClick={updateFormType}>Search by Pizza</button>
                 <h3>What are we watching tonight?</h3>
                 <form onSubmit={pizzaCall}>
                     <label htmlFor="movieTitle">Movie Title</label>
                     <input
                         type="text"
-                        placeholder="What are we watching tonight?"
+                        placeholder="What's it called?"
                         value={movieTitle}
                         onChange={updateMovieTitle}
                         />

@@ -20,6 +20,11 @@
 }
 
 /* Form Selection Form Style */
+
+button.alternate-search {
+    margin-left: 0px;
+}
+
 #pairing-form form#form-selection label {
     display: flex;
     align-items: center;
