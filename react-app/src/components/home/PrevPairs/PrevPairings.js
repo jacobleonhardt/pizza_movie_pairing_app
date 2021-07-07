@@ -3,6 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { deletePair } from "../../../store/pairing";
 import { newReview } from "../../../store/review";
 import "./prevpairings.css"
+import {
+    FacebookShareButton,
+    InstapaperShareButton,
+    RedditShareButton,
+    TwitterShareButton,
+    WhatsappShareButton,
+  } from "react-share";
 
 const PrevPairingCard = (movie) => {
     const dispatch = useDispatch()
@@ -37,7 +44,7 @@ const PrevPairingCard = (movie) => {
 
     return (
         <div className="previous-pairing">
-            <div id="pairing-cards" className="solid-block">
+            <div id={`${movie.movie.id}`} className="pairing-cards solid-block">
                 <div className="first">
                     <img src={`https://image.tmdb.org/t/p/w500${movie.movie.poster}`} />
                 </div>
@@ -51,6 +58,7 @@ const PrevPairingCard = (movie) => {
                     <button disabled={isGood} onClick={thumbsUp} className={(isGood ? "good" : isBad === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-up-outline"></ion-icon></button>
                     <button disabled={isBad} onClick={thumbsDown} className={(isBad ? "bad" : isGood === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-down-outline"></ion-icon></button>
                     <button onClick={deletePrevPair}><ion-icon name="trash-outline"></ion-icon></button>
+                    <FacebookShareButton children={'PrevPairingCard'} url={`https://pieflix.herokuapp.com/#${movie.movie.id}`} title={`${movie.movie.pizza} + ${movie.movie.title}`}/>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-#pairing-cards.solid-block{
+.pairing-cards.solid-block{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 1fr;
     align-items: center;
@@ -8,26 +8,26 @@
     margin-bottom: 2%;
 }
 
-#pairing-cards .third h4{
+.pairing-cards .third h4{
     text-align: center;
 }
 
-#pairing-cards .forth {
+.pairing-cards .forth {
     font-size: 32px;
 }
 
-#pairing-cards .first img {
+.pairing-cards .first img {
     max-width: 150px;
 }
 
-#pairing-cards h4 {
+.pairing-cards h4 {
     font-size: 1.25em;
     font-weight: 300;;
     text-align: left;
     margin: 0 auto;
 }
 
-#pairing-cards button {
+.pairing-cards button {
     font-size: 21px;
     line-height: 1px;
     margin: 2%;
@@ -43,31 +43,31 @@ button.bad {
     pointer-events: none;
 }
 
-#pairing-cards button.hide {
+.pairing-cards button.hide {
     display: none;
 }
 
 @media screen and (max-width: 1153px) {
-    #pairing-cards button {
+    .pairing-cards button {
         display: block;
         margin: 5%;
     }
 }
 
 @media screen and (max-width: 768px) {
-    #pairing-cards.solid-block{
+    .pairing-cards.solid-block{
         display: block;
         margin-bottom: 8%;
     }
 
-    #pairing-cards .first img {
+    .pairing-cards .first img {
         margin-bottom: 2%;
     }
 
-    #pairing-cards h4 {
+    .pairing-cards h4 {
         text-align: center;
     }
-    #pairing-cards button {
+    .pairing-cards button {
         margin: 2%;
         display: inline-block;
     }
