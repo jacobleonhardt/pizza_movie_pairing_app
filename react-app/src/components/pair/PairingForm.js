@@ -58,10 +58,10 @@ const PairingForm = () => {
     return(
         <div className="container">
             <div className="greeting">
-                <h2>Find a Film</h2>
+                { formType ? <h2>Find a Film</h2> : <h2>Pick a Pizza</h2>}
             </div>
             { condition ?
-            <div id="pairing-display" className="solid-block">
+            <div id="pairing-display" className="solid-block" style={{background: condition ? `url(https://image.tmdb.org/t/p/w500${movie.poster})` : ''}}>
                 { !movie.error ? <> <div className="left">
                     <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} alt={`${movie.title} movie poster`} />
                 </div>
