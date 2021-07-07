@@ -5,10 +5,8 @@ import { newReview } from "../../../store/review";
 import "./prevpairings.css"
 import {
     FacebookShareButton,
-    InstapaperShareButton,
-    RedditShareButton,
     TwitterShareButton,
-    WhatsappShareButton,
+    RedditShareButton,
   } from "react-share";
 
 const PrevPairingCard = (movie) => {
@@ -55,10 +53,14 @@ const PrevPairingCard = (movie) => {
                     <h4>{movie.movie.pizza}</h4>
                 </div>
                 <div className="forth">
+                    <FacebookShareButton children={<ion-icon name="logo-facebook"></ion-icon>} url={`https://pieflix.herokuapp.com/`} quote={`${movie.movie.pizza} + ${movie.movie.title} (${movie.movie.release_date.slice(0,4)})`}/>
+                    <TwitterShareButton children={<ion-icon name="logo-twitter"></ion-icon>} url={`https://pieflix.herokuapp.com/`} quote={`${movie.movie.pizza} + ${movie.movie.title} (${movie.movie.release_date.slice(0,4)})`}/>
+                    <RedditShareButton children={<ion-icon name="logo-reddit"></ion-icon>} url={`https://pieflix.herokuapp.com/`} quote={`${movie.movie.pizza} + ${movie.movie.title} (${movie.movie.release_date.slice(0,4)})`}/>
+                </div>
+                <div className="fifth">
                     <button disabled={isGood} onClick={thumbsUp} className={(isGood ? "good" : isBad === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-up-outline"></ion-icon></button>
                     <button disabled={isBad} onClick={thumbsDown} className={(isBad ? "bad" : isGood === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-down-outline"></ion-icon></button>
                     <button onClick={deletePrevPair}><ion-icon name="trash-outline"></ion-icon></button>
-                    <FacebookShareButton children={<ion-icon name="logo-facebook"></ion-icon>} url={`https://pieflix.herokuapp.com/`} quote={`${movie.movie.pizza} + ${movie.movie.title} (${movie.movie.release_date.slice(0,4)})`}/>
                 </div>
             </div>
         </div>
