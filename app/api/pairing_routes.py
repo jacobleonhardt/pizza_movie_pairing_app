@@ -107,32 +107,36 @@ def reversePairing(userId, movieTitle, movieYear):
     query_string.lower()
     req = requests.get(f"https://api.themoviedb.org/3/search/movie?api_key={API}&query={query_string}&year={movieYear}")
 
+
     response = req.json();
     results = response["results"];
-    chosen_movie = results[0]
-    pizza_selection = ''
+    if len(results) > 0:
+        chosen_movie = results[0]
+        pizza_selection = ''
 
-    for genre in chosen_movie["genre_ids"]:
-        if genre == 12:
-            pizza_selection = "Domino's Pizza"
-        elif genre == 14:
-            pizza_selection = "Mellow Mushroom"
-        elif genre == 18:
-            pizza_selection = "Donatos Pizza"
-        elif genre == 28:
-            pizza_selection = "Pizza Hut"
-        elif genre == 36:
-            pizza_selection = "Papa John's Pizza"
-        elif genre == 37:
-            pizza_selection = "Papa John's Pizza"
-        elif genre == 53:
-            pizza_selection = "Pizza Hut"
-        elif genre == 878:
-            pizza_selection = "Pizza Hut"
-        elif genre == 10752:
-            pizza_selection = "Papa John's Pizza"
-        else:
-            pizza_selection = "Little Caesars Pizza"
+        for genre in chosen_movie["genre_ids"]:
+            if genre == 12:
+                pizza_selection = "Domino's Pizza"
+            elif genre == 14:
+                pizza_selection = "Mellow Mushroom"
+            elif genre == 18:
+                pizza_selection = "Donatos Pizza"
+            elif genre == 28:
+                pizza_selection = "Pizza Hut"
+            elif genre == 36:
+                pizza_selection = "Papa John's Pizza"
+            elif genre == 37:
+                pizza_selection = "Papa John's Pizza"
+            elif genre == 53:
+                pizza_selection = "Pizza Hut"
+            elif genre == 878:
+                pizza_selection = "Pizza Hut"
+            elif genre == 10752:
+                pizza_selection = "Papa John's Pizza"
+            else:
+                pizza_selection = "Little Caesars Pizza"
+    else:
+        return({'error': "whoops!"})
 
     pairing = Pairing(
         user_id=userId,

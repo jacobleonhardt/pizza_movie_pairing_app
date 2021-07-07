@@ -28,14 +28,14 @@ const PairingForm = () => {
         setMovieYear(e.target.value)
     };
 
-    const movieCall = async (e) => {
+    const movieCall = async(e) => {
         e.preventDefault();
         const pair = await dispatch(makeCall(user.id, pizzaPlace))
         setCondition(true)
         return pair;
     }
 
-    const pizzaCall = async (e) => {
+    const pizzaCall = async(e) => {
         e.preventDefault();
         const movie = await dispatch(makePizzaCall(user.id, movieTitle, movieYear))
         setCondition(true)
@@ -44,10 +44,15 @@ const PairingForm = () => {
 
 // Removing previous pair and querying a new movie.
 // "Actually, it's super easy, barely an inconvenience.""
-    const notFeelingIt = async (e) => {
+    const notFeelingIt = async(e) => {
         e.preventDefault();
         const newPair = await dispatch(makeDiffCall(user.id, pizzaPlace, movie.id))
         return newPair;
+    }
+
+
+    const tryAgain = async(e) => {
+        window.location.reload()
     }
 
     return(
@@ -57,7 +62,7 @@ const PairingForm = () => {
             </div>
             { condition ?
             <div id="pairing-display" className="solid-block">
-                <div className="left">
+                { !movie.error ? <> <div className="left">
                     <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} alt={`${movie.title} movie poster`} />
                 </div>
                 <div className="right">
@@ -67,7 +72,12 @@ const PairingForm = () => {
                     <p>{movie.plot}</p>
                     <br/>
                     { formType ? <button onClick={notFeelingIt} className="button-link-alt">Not Feeling It?</button> : <></> }
-                </div>
+                </div> </> :
+                <><div className="error-message">
+                    <h2>{movie.error}</h2>
+                    <p>It seems we couldn't find the movie you were looking for in our database... our bad! Please double check the movie info is correct and try again.</p>
+                    <button id="try-again" className="button-link-alt" onClick={tryAgain}>Try Again</button>
+                </div></> }
             </div> :
             <div id="pairing-form" className="solid-block">
                 {formType ?
