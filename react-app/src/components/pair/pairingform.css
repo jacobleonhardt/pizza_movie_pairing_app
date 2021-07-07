@@ -51,10 +51,16 @@ button.alternate-search {
 }
 
 /* Result Style */
+
 #pairing-display {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#pairing-display.solid-block.with-background {
+    background-size: cover !important;
+    background-position: center center;
 }
 
 #pairing-display img {

@@ -12,6 +12,7 @@ class Pairing(db.Model):
     genre = db.Column(db.String)
     plot = db.Column(db.String)
     poster = db.Column(db.String)
+    backdrop_path = db.Column(db.String)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     user = db.relationship("User", back_populates="pairing")
@@ -26,5 +27,6 @@ class Pairing(db.Model):
             "genre": self.genre,
             "plot": self.plot,
             "poster": self.poster,
+            "backdrop_path": self.backdrop_path,
             "created_at": self.created_at
         }
