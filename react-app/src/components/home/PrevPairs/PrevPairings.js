@@ -58,7 +58,7 @@ const PrevPairingCard = (movie) => {
                     <button disabled={isGood} onClick={thumbsUp} className={(isGood ? "good" : isBad === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-up-outline"></ion-icon></button>
                     <button disabled={isBad} onClick={thumbsDown} className={(isBad ? "bad" : isGood === undefined ? "no-vote" : "hide")}><ion-icon name="thumbs-down-outline"></ion-icon></button>
                     <button onClick={deletePrevPair}><ion-icon name="trash-outline"></ion-icon></button>
-                    <FacebookShareButton children={'PrevPairingCard'} url={`https://pieflix.herokuapp.com/#${movie.movie.id}`} title={`${movie.movie.pizza} + ${movie.movie.title}`}/>
+                    <FacebookShareButton children={<ion-icon name="logo-facebook"></ion-icon>} url={`https://pieflix.herokuapp.com/`} quote={`${movie.movie.pizza} + ${movie.movie.title} (${movie.movie.release_date.slice(0,4)})`}/>
                 </div>
             </div>
         </div>
