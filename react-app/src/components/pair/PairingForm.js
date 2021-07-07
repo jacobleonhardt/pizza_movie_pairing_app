@@ -72,7 +72,6 @@ const PairingForm = () => {
             <div id="pairing-form" className="solid-block">
                 {formType ?
                 <>
-                <button className='alternate-search' onClick={updateFormType}>Search by Movie</button>
                 <h3>Where are we eating?</h3>
                 <form onSubmit={movieCall}>
                     <label htmlFor="pizzaPlace">Pizza Place</label>
@@ -88,10 +87,11 @@ const PairingForm = () => {
                     </select>
                     <button className="button-link-alt">Find a Film</button>
                 </form>
+                <span className='seperator'>- or -</span>
+                <button className='alternate-search' onClick={updateFormType}>Search by Movie</button>
                 </>
                 :
                 <>
-                <button className='alternate-search' onClick={updateFormType}>Search by Pizza</button>
                 <h3>What are we watching tonight?</h3>
                 <form onSubmit={pizzaCall}>
                     <label htmlFor="movieTitle">Movie Title</label>
@@ -109,6 +109,8 @@ const PairingForm = () => {
                         />
                     <button className="button-link-alt">Pick a Pizza</button>
                 </form>
+                <span className='seperator'>- or -</span>
+                <button className='alternate-search' onClick={updateFormType}>Search by Pizza</button>
                 </>}
             </div>}
         </div>

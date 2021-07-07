@@ -24,10 +24,10 @@ const NavBar = () => {
           </NavLink>
           </> : <>
           <NavLink to="/" exact={true} activeClassName="active">
-            Profile
+            Pairings
           </NavLink>
           <NavLink to="/pair" exact={true} activeClassName="active">
-            Pair
+            New Pair
           </NavLink>
           <NavLink to="/account" exact={true} activeClassName="active">
             Account
