@@ -8,7 +8,7 @@ const PairingForm = () => {
     const user = useSelector(state => state.session.user)
     const [pizzaPlace, setPizzaPlace] = useState("");
     const [condition, setCondition] = useState(false)
-    const [formType, setFormType] = useState('true')
+    const [formType, setFormType] = useState(true)
     const [movieTitle, setMovieTitle] = useState("")
     const [movieYear, setMovieYear] = useState("")
     const selection = useSelector(state => state.pairing)
@@ -16,7 +16,8 @@ const PairingForm = () => {
 
 
     const updateFormType = (e) => {
-        setFormType(e.target.value)
+        e.preventDefault();
+        setFormType(!formType)
     }
 
     const updateMovieTitle = (e) => {
@@ -60,7 +61,7 @@ const PairingForm = () => {
                     <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} alt={`${movie.title} movie poster`} />
                 </div>
                 <div className="right">
-                    <h2>{movie.pizza_selection}</h2>
+                    <h2>{movie.pizza}</h2>
                     <h2>{movie.title}</h2>
                     <h5>({movie.release_date ? movie.release_date.slice(0,4) : 'Unknown'})</h5>
                     <p>{movie.plot}</p>
@@ -69,26 +70,9 @@ const PairingForm = () => {
                 </div>
             </div> :
             <div id="pairing-form" className="solid-block">
-                <form id="form-selection">
-                    <div className="radio-button">
-                        <label htmlFor="formType-pizza">
-                            <input
-                                type="radio"
-                                value={'true'}
-                                onChange={updateFormType}
-                            />Search by Pizza</label>
-                    </div>
-                    <div className="radio-button">
-                        <label htmlFor="formType-movie">
-                            <input
-                                type="radio"
-                                value={'false'}
-                                onChange={updateFormType}
-                            />Search by Movie</label>
-                    </div>
-                </form>
-                {formType == 'true' ?
+                {formType ?
                 <>
+                <button className='tabs' onClick={updateFormType}>Search by Movie</button>
                 <h3>Where are we eating?</h3>
                 <form onSubmit={movieCall}>
                     <label htmlFor="pizzaPlace">Pizza Place</label>
@@ -107,6 +91,7 @@ const PairingForm = () => {
                 </>
                 :
                 <>
+                <button className='tabs' onClick={updateFormType}>Search by Pizza</button>
                 <h3>What are we watching tonight?</h3>
                 <form onSubmit={pizzaCall}>
                     <label htmlFor="movieTitle">Movie Title</label>

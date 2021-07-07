@@ -117,12 +117,20 @@ def reversePairing(userId, movieTitle, movieYear):
             pizza_selection = "Domino's Pizza"
         elif genre == 14:
             pizza_selection = "Mellow Mushroom"
-        elif genre == 28 or 878 or 53:
-            pizza_selection = "Pizza Hut"
-        elif genre == 10752 or 37 or 36:
-            pizza_selection = "Papa John's Pizza"
         elif genre == 18:
             pizza_selection = "Donatos Pizza"
+        elif genre == 28:
+            pizza_selection = "Pizza Hut"
+        elif genre == 36:
+            pizza_selection = "Papa John's Pizza"
+        elif genre == 37:
+            pizza_selection = "Papa John's Pizza"
+        elif genre == 53:
+            pizza_selection = "Pizza Hut"
+        elif genre == 878:
+            pizza_selection = "Pizza Hut"
+        elif genre == 10752:
+            pizza_selection = "Papa John's Pizza"
         else:
             pizza_selection = "Little Caesars Pizza"
 

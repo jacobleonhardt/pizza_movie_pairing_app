@@ -20,11 +20,20 @@
 }
 
 /* Form Selection Form Style */
-
 #pairing-form form#form-selection label {
     display: flex;
     align-items: center;
 }
+
+#pairing-form input {
+    display: block;
+    padding: 8px;
+    border: 2px solid #000;
+    margin: 8px;
+    width: 100%;
+    font-size: 21px;
+}
+
 
 .radio-button {
     display: inline-block;
