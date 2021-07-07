@@ -14,6 +14,9 @@
 
 .pairing-cards .forth {
     font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .pairing-cards .first img {
@@ -45,6 +48,16 @@ button.bad {
 
 .pairing-cards button.hide {
     display: none;
+}
+
+button.react-share__ShareButton {
+    width: 1.15em;
+    height: 1.15em;
+}
+
+ion-icon.md.hydrated {
+    width: 1.15em;
+    height: 1.15em;
 }
 
 @media screen and (max-width: 1153px) {
