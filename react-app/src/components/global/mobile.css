@@ -1,0 +1,26 @@
+nav .right.mobile {
+    margin: 1% 2%;
+    position: relative;
+    text-align: right;
+}
+
+#mobile-menu.hide {
+    display: none;
+}
+
+#mobile-menu.display {
+    transform: rotateY(5);
+    display: block;
+    margin: 5px;
+}
+
+#mobile-menu.display a {
+    display: block;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    nav {
+        align-items: flex-start;
+    }
+}

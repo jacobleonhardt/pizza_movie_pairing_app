@@ -25,8 +25,9 @@ function User() {
       const user = await response.json();
       setUser(user);
     })();
-      dispatch(getPairs(userId))
-      dispatch(getPastReviews(userId))
+
+    dispatch(getPairs(userId))
+    dispatch(getPastReviews(userId))
   }, [dispatch]);
 
   if (!user) {
