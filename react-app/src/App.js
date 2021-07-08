@@ -11,6 +11,7 @@ import EditForm from "./components/auth/EditForm";
 import Landing from "./components/home/Landing";
 import User from "./components/home/User";
 import PairingForm from "./components/pair/PairingForm";
+import UpdatingAccount from "./components/auth/UpdatingAccount";
 import SignedOut from "./components/auth/SignedOut";
 import DeleteAccount from "./components/auth/DeleteAccount";
 import NotFound from "./components/404/notfound"
@@ -67,6 +68,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/account" exact={true}>
           <EditForm />
+        </ProtectedRoute>
+        <ProtectedRoute path="/updating-account" exact={true}>
+          <UpdatingAccount />
         </ProtectedRoute>
         <Route path="/signed-out" exact={true}>
           <SignedOut />

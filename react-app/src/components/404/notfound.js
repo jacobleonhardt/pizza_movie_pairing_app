@@ -15,7 +15,7 @@ const NotFound = () => {
         {movie: "Apollo 13", said: "Jim Lovell", quote: "Houston, we have a problem."},
         {movie: "Casablanca", said: "Rick Blaine", quote: "Of all the gin joints in all the towns in all the world, she walks into mine."},
         {movie: "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb", said: "President Merkin Muffley", quote: "Gentlemen, you can't fight in here! This is the War Room."},
-        {movie: "Labyrinth", said: "The Worm", quote: "If she'd 'ave kept on goin' down that way she'd 'ave gone straight to that castle."},
+        {movie: "Labyrinth", said: "The Worm", quote: "No! Don't go that way! Never go that way!"},
         {movie: "Avengers: Endgame", said: "Clint Barton", quote: "You see where you're going. Now let's worry about how you get there."},
     ]
 
