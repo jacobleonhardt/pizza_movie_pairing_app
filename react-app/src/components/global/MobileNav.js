@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
@@ -14,6 +14,14 @@ const MobileNav = () => {
         setOpen(!open)
     }
 
+    const navClicked = () => {
+        setOpen(false)
+    }
+
+    useEffect(() => {
+        setOpen(false)
+    }, [LogoutButton])
+
     return(
         <nav>
             <div className="left mobile">
@@ -24,24 +32,24 @@ const MobileNav = () => {
                 <div id="mobile-menu" className={open ? "display" : "hide"}>
                     {!user ?
                         <>
-                            <NavLink to="/login" exact={true} activeClassName="active">
+                            <NavLink onClick={navClicked} to="/login" exact={true} activeClassName="active">
                                 Login
                             </NavLink>
-                            <NavLink to="/new-account" exact={true} activeClassName="active">
+                            <NavLink onClick={navClicked} to="/new-account" exact={true} className="nav-button" activeClassName="active">
                                 New Account
                             </NavLink>
                         </> :
                         <>
-                            <NavLink to="/" exact={true} activeClassName="active">
+                            <NavLink onClick={navClicked} to="/" exact={true} activeClassName="active">
                                 Pairings
                             </NavLink>
-                            <NavLink to="/pair" exact={true} activeClassName="active">
+                            <NavLink onClick={navClicked} to="/pair" exact={true} activeClassName="active">
                                 New Pair
                             </NavLink>
-                            <NavLink to="/account" exact={true} activeClassName="active">
+                            <NavLink onClick={navClicked} to="/account" exact={true} activeClassName="active">
                                 Account
                             </NavLink>
-                            <LogoutButton />
+                            <span onClick={navClicked}><LogoutButton /></span>
                         </>
                     }
                 </div>

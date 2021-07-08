@@ -83,7 +83,7 @@ span#equals h3 {
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 768px) {
     span#equals h3 {
         margin: 0;
         font-size: .9em;
@@ -112,10 +112,22 @@ span#equals h3 {
     text-align: center;
 }
 
-.none-message {
-    margin-bottom: 2%;
+.none-message p {
+    margin: 0 auto 2%;
+    text-align: center;
     color: #fff;
     opacity: .75;
     font-family: 'Roboto', sans-serif;
-    font-size: 18px;
+    font-size: 21px;
+}
+
+@media screen and (max-width: 768px) {
+    .none-message {
+        padding-bottom: 28px;
+    }
+
+    .none-message p {
+        text-align: center;
+        margin-bottom: 28px;
+    }
 }
