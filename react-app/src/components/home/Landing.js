@@ -20,7 +20,7 @@ function Landing() {
             <div id="plus-graph">
                 <img src={pizza} alt="pizza graphic"/> &nbsp; + &nbsp; <img src={reel} alt="film reel graphic"/> &nbsp; = &nbsp; <span id="equals"><h3>pieflix</h3></span>
             </div>
-            <p>don't let your pizza get cold while you surf streaming platforms looking for something to watch. pieflix is here to find you the perfect pizza-movie pairing based off of your chosen pizza brand.</p>
+            <p>Don't let your pizza get cold while you surf streaming platforms looking for something to watch. pieflix is here to find you the perfect pizza-movie pairing based off of your chosen pizza brand.</p>
         </div>
        </div>
     )

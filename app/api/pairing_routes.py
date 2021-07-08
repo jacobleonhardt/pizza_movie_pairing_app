@@ -14,6 +14,7 @@ API = os.environ.get('TMDB_API')
 def getPrePairings(userId):
     prev = Pairing.query.filter(Pairing.user_id == userId).order_by(Pairing.created_at.desc()).all()
     prev_list = [movie.to_dict() for movie in prev]
+
     return jsonify(prev_list)
 
 
@@ -33,6 +34,17 @@ def deletePair(pairId):
     prev = Pairing.query.filter(Pairing.user_id == info["userId"]).order_by(Pairing.created_at.desc()).all()
     prev_list = [movie.to_dict() for movie in prev]
     return jsonify(prev_list)
+
+@pairing_routes.route('/delete/404s', methods=["DELETE"])
+@login_required
+def delete404s():
+    info = request.get_json()
+    notFound = Pairing.query.filter(Pairing.pizza == '404').first()
+
+    db.session.delete(notFound)
+    db.session.commit()
+
+    return
 
 
 @pairing_routes.route('/new/<int:userId>/<pizzaPlace>')

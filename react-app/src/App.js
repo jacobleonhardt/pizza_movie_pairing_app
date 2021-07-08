@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -10,6 +10,7 @@ import EditForm from "./components/auth/EditForm";
 import Landing from "./components/home/Landing";
 import User from "./components/home/User";
 import PairingForm from "./components/pair/PairingForm";
+import NotFound from "./components/404/notfound"
 import { authenticate } from "./store/session";
 
 function App() {
@@ -48,6 +49,12 @@ function App() {
         <ProtectedRoute path="/account" exact={true}>
           <EditForm />
         </ProtectedRoute>
+        <Route path="/404">
+          <NotFound />
+        </Route>
+        <Route path="*">
+          <Redirect to="/404" />
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>

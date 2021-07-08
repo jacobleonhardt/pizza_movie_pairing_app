@@ -1,0 +1,12 @@
+.not-found {
+    margin: 0 auto;
+}
+
+#quote h3 {
+    text-align: center;
+}
+
+#quote p {
+    text-align: right;
+    margin-bottom: 5%;
+}
