@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/global/NavBar";
+import MobileNav from "./components/global/MobileNav";
 import Footer from "./components/global/Footer";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import EditForm from "./components/auth/EditForm";
@@ -18,21 +19,37 @@ function App() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const user = useSelector(state => state.session.user)
+  const [onMobile, setOnMobile] = useState(false)
+
+  // Checks for what navigation status should be on page resizing
+  const checkForMobileSize = () => {
+    if (window.innerWidth <= 768) {
+      setOnMobile(true)
+    } else {
+      setOnMobile(false)
+    }
+  }
 
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
+
+    // Sets navigation status on page load
+    window.innerWidth <= 768 ? setOnMobile(true) : setOnMobile(false)
+
   }, [dispatch]);
 
   if (!loaded) {
     return null;
   }
 
+  window.onresize = checkForMobileSize;
+
   return (
     <BrowserRouter>
-      <NavBar />
+      {!onMobile ? <NavBar /> : <MobileNav />}
       <Switch>
         <Route path="/" exact={true} >
           {user ? <User /> : <Landing />}
