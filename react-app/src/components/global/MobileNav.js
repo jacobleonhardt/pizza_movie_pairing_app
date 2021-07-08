@@ -20,7 +20,7 @@ const MobileNav = () => {
                 <a id="logo" href="/">pieflix</a>
             </div>
             <div className="right mobile">
-                <button onClick={clickMobileNav}>{open ? <ion-icon name="close-outline"></ion-icon> : <ion-icon name="menu-outline"></ion-icon>}</button>
+                <button id="menu" className={open ? "open" : "closed"} onClick={clickMobileNav}>{open ? <ion-icon name="close-outline"></ion-icon> : <ion-icon name="menu-outline"></ion-icon>}</button>
                 <div id="mobile-menu" className={open ? "display" : "hide"}>
                     {!user ?
                         <>
