@@ -10,3 +10,19 @@
     text-align: right;
     margin-bottom: 5%;
 }
+
+@media screen and (max-width: 768px) {
+    #quote {
+        padding-bottom: 28px;
+    }
+
+    #quote p {
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    #quote a.button-link-alt {
+        margin-left: 0px;
+    }
+
+}

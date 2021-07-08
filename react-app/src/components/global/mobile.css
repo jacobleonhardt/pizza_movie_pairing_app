@@ -18,6 +18,11 @@ nav .right.mobile button#menu.open {
     display: none;
 }
 
+#mobile-menu.display {
+    transition: 5s;
+    transition-property: display;
+}
+
 #mobile-menu {
     text-align: center;
     padding: 10px;
@@ -32,7 +37,7 @@ nav .right.mobile button#menu.open {
     margin-bottom: 10px;
 }
 
-#mobile-menu button {
+#mobile-menu button, #mobile-menu a.nav-button {
     margin-left: 0px;
 }
 

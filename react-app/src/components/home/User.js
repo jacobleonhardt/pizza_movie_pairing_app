@@ -48,8 +48,10 @@ function User() {
             {previous.map(movie => <PrevPairingCard key={movie.id} movie={movie}/>)}
           </div> :
         <>
-          <div className="none-message">You don't have any Previous Pairs. Let's go get some!</div>
-          <Link className="button-link-alt" to="/pair">Find a Film</Link>
+          <div className="none-message">
+            <p>You don't have any Previous Pairs. Let's go get some!</p>
+            <Link className="button-link-alt" to="/pair">Find a Film</Link>
+          </div>
         </>}
         </div>
       </div>
