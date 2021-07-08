@@ -1,8 +1,8 @@
 nav .right.mobile {
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
-    /* justify-content: right; */
-    margin: 1% 2%;
+    align-items: flex-end;
+    margin: 8px 2%;
 }
 
 nav .right.mobile button#menu {
@@ -11,7 +11,6 @@ nav .right.mobile button#menu {
 }
 
 nav .right.mobile button#menu.open {
-    justify-items: flex-end;
     background: linear-gradient(to right, #B71C02, #ECB906);
 }
 
@@ -19,7 +18,7 @@ nav .right.mobile button#menu.open {
     display: none;
 }
 
-#mobile-menu.display {
+#mobile-menu {
     text-align: center;
     padding: 10px;
     border: 2px solid #fff;
@@ -28,12 +27,12 @@ nav .right.mobile button#menu.open {
     box-shadow: 2px 2px 10px #333;
 }
 
-#mobile-menu.display a {
+#mobile-menu a {
     display: block;
     margin-bottom: 10px;
 }
 
-#mobile-menu.display button {
+#mobile-menu button {
     margin-left: 0px;
 }
 
