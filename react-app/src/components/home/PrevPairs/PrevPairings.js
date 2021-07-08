@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { deletePair } from "../../../store/pairing";
 import { newReview } from "../../../store/review";

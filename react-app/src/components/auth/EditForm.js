@@ -50,7 +50,7 @@ const deleteAccount = async(e) => {
   await dispatch(resetUserReviews())
   await dispatch(resetPrevPairs())
   await dispatch(deleteUser(user.id))
-  return history.push('/')
+  return history.push('/account-deleted')
 }
 
   return (
