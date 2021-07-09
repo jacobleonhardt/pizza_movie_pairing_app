@@ -86,6 +86,48 @@ def pairing(userId, pizzaPlace):
         pizza_selection = "Domino's Pizza"
         req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&with_runtime.gte=60&original_language=en&release_date.gte=01011980&certification_country=US&certification.lte=PG-13&with_genres=12")
 ```
+The call is then parsed as json, and the "results" key (which contains the list of potential movie selections) is obtained. Then we query the database for the user's previous pairings.
+
+```
+    response = req.json();
+    results = response["results"];
+    prev = Pairing.query.filter(Pairing.user_id == userId).all()
+    prev_selections = []
+```
+Then we go through each of the previous pairs and add their movie titles to a list called prev_selections. Then we iterate through the titles of the movies in the potential selections, and any that are not found in the prev_selections list are then added to the possible_selections list.
+
+```
+    for pair in prev:
+            prev_selections.append(pair.title)
+
+    possible_selections = []
+
+    for movie in results:
+        if movie["title"] not in prev_selections:
+            possible_selections.append(movie)
+```
+A random selection is then made from the possible_selections list, and a new entry in the database is created with the information from our selected movie.
+
+```
+    movie = random.choice(possible_selections);
+
+    pairing = Pairing(
+        user_id=userId,
+        pizza=pizza_selection,
+        title=movie["title"],
+        release_date=movie["release_date"],
+        genre=movie["genre_ids"],
+        plot=movie["overview"],
+        poster=movie["poster_path"],
+        backdrop_path=movie["backdrop_path"]
+    )
+
+    db.session.add(pairing)
+    db.session.commit()
+
+    return pairing.to_dict()
+```
+The new pairing is then returned to the front end where it can be displayed to the user.
 
 ***
 

@@ -78,11 +78,11 @@ def pairing(userId, pizzaPlace):
         pizza_selection = "Pizza Hut"
         req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&with_runtime.gte=60&original_language=en&release_date.gte=01011980&certification_country=US&certification=PG-13&vote_average.gte=6.5&with_genres=28|878|53")
 
-
     response = req.json();
     results = response["results"];
     prev = Pairing.query.filter(Pairing.user_id == userId).all()
     prev_selections = []
+
 
     for pair in prev:
             prev_selections.append(pair.title)
@@ -94,6 +94,10 @@ def pairing(userId, pizzaPlace):
             possible_selections.append(movie)
 
     movie = random.choice(possible_selections);
+
+    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@', prev_selections)
+    print('###########################', possible_selections)
+
 
     pairing = Pairing(
         user_id=userId,
