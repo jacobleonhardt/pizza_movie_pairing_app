@@ -78,14 +78,14 @@ The backend of pieflix is coded in python, and uses Flask and SQLAlchemy to mana
 
 The following is an example of an API call to TMDb, based on the user-input of 'dominos'
 
-``
+```
 @pairing_routes.route('/new/<int:userId>/<pizzaPlace>')
 @login_required
 def pairing(userId, pizzaPlace):
     if pizzaPlace == 'dominos':
         pizza_selection = "Domino's Pizza"
         req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&with_runtime.gte=60&original_language=en&release_date.gte=01011980&certification_country=US&certification.lte=PG-13&with_genres=12")
-``
+```
 
 ***
 
