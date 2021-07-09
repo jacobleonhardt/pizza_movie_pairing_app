@@ -1,17 +1,25 @@
 # pieflix
 by Jacob Leonhardt | [Checkout pieflix](https://pieflix.herokuapp.com/)
 
+Table of Contents
+* [The Gist](#the-gist)
+* [The Stack](#the-stack)
+* Frontend Overview
+* Backend Overview
+* Next Steps
+* Contributions
+
 ![pieflix Landing page](https://media-exp3.licdn.com/dms/image/C5622AQFXSrCIzH8_fQ/feedshare-shrink_2048_1536/0/1625862936817?e=1628726400&v=beta&t=zj83oBbKwTBlIilwVY_BKKMmjwYk4N1zFfOr-f603WA)
 
-## The Gist
+## <a name="the-gist"></a>The Gist
 
 Pieflix is a full stack application used to create pairings of pizza companies and movies. The app allows users to search the TMDb database by selecting one of two processes: Find a Film, or Pick a Pizza.
 
-With Find a Film, the user selects a pizza brand and the app searches for a movie using predefined filters. When a paring is displayed, users can click the "Not Feeling It" button. If they do, pieflix will search the TMDb database for a different film that matches the same query filters. (The rejected movie will not be displayed in their list of previous pairings.)
+With Find a Film, the user selects a pizza brand and the app searches for a movie using predefined filters. When a paring is displayed, users can click the "Not Feeling It?" button. If they do, pieflix will search the TMDb database for a different film that matches the same query filters. (The rejected movie will not be displayed in their list of previous pairings.)
 
 ![pieflix Find a Film example](https://media-exp3.licdn.com/dms/image/C5622AQE5Pro4A-H2Ew/feedshare-shrink_2048_1536/0/1625862940649?e=1628726400&v=beta&t=QT5XIJbCxt6uSZTgziOgOq19eNi1UaSGduM2XLi5XxI)
 
-Alternatively, with Pick a Pizza, the user inputs their selected movie's title and release year into a form and the app selects a pizza brand.
+Alternatively, with Pick a Pizza, the user inputs their selected movie's title and release year into a form, and the app selects a pizza brand.
 
 ![pieflix Pick a Pizza example](https://media-exp3.licdn.com/dms/image/C5622AQHh2wqognWJeg/feedshare-shrink_2048_1536/0/1625862941161?e=1628726400&v=beta&t=i_axJ1HBh7lV3lpmkSC0x4NK9HrWa3mbghB26sTf-6U)
 
@@ -29,7 +37,9 @@ When an user choses to Find a Film, the backend of pieflix checks the list of re
     1. If the user choses to search via Pick a Pizza, and inputs a movie they have previously paired.
     2. The user deletes the previous pair; in which case the pair would not be included in the previously paired movie list.
 
-## The Stack
+***
+
+## <a name="the-stack"></a>The Stack
 
 ### Backend
 
@@ -48,6 +58,9 @@ When an user choses to Find a Film, the backend of pieflix checks the list of re
 * Redux
 * [React-Share](https://www.npmjs.com/package/react-share)
 
-### Extras/Third-Party
+### Datbase
 
 * [TMDb (The Movie Database)](https://www.themoviedb.org/)
+This product uses the TMDb API but is not endorsed or certified by TMDb.
+
+***
