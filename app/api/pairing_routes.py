@@ -95,10 +95,6 @@ def pairing(userId, pizzaPlace):
 
     movie = random.choice(possible_selections);
 
-    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@', prev_selections)
-    print('###########################', possible_selections)
-
-
     pairing = Pairing(
         user_id=userId,
         pizza=pizza_selection,

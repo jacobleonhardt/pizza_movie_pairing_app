@@ -33,7 +33,7 @@ Users also have the option to share pairings they like on Facebook, Twitter, and
 
 ![pieflix share on social media example](https://media-exp3.licdn.com/dms/image/C5622AQGw6l4z0vYrHA/feedshare-shrink_2048_1536/0/1625862938100?e=1628726400&v=beta&t=EQKaAYFQjvNiqQBv8AmGMfWOIveEW8XcmdoGU2k24HY)
 
-### A note about querying
+### A Note About Querying
 
 When an user choses to Find a Film, the backend of pieflix checks the list of returned movie queries from TMDb, and compares it to a list of the user's previously paired movies. Movies not found in the previously paired list are then placed into a list of possible selections, and a movie is selected randomly from that list. In this way, a user should not receive the same pizza-movie pairing twice. The exceptions to this are:
     1. If the user choses to search via Pick a Pizza, and inputs a movie they have previously paired.
@@ -76,7 +76,7 @@ For more information about TMDb's API, checkout the [developers section](https:/
 
 The backend of pieflix is coded in python, and uses Flask and SQLAlchemy to manage API calls and the interactions with the database. [Requests](https://docs.python-requests.org/en/master/user/quickstart/#make-a-request) is used to make calls to TMDb API and return lists of movies.
 
-The following is an example of an API call to TMDb, based on the user-input of 'dominos'
+The following is an example of an API call to TMDb, based on the user-input of 'dominos'.
 
 ```
 @pairing_routes.route('/new/<int:userId>/<pizzaPlace>')
@@ -86,7 +86,7 @@ def pairing(userId, pizzaPlace):
         pizza_selection = "Domino's Pizza"
         req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&with_runtime.gte=60&original_language=en&release_date.gte=01011980&certification_country=US&certification.lte=PG-13&with_genres=12")
 ```
-The call is then parsed as json, and the "results" key (which contains the list of potential movie selections) is obtained. Then we query the database for the user's previous pairings.
+The response is then converted to json, and the "results" key (which contains the list of potential movie selections) is obtained. Then we query the database for the user's previous pairings.
 
 ```
     response = req.json();
@@ -133,6 +133,65 @@ The new pairing is then returned to the front end where it can be displayed to t
 
 ## <a name="frontend-overview"></a>Frontend Overview
 
+On the frontend, React, Redux, and good ol' CSS display the information returned from the call. React is used for rendering component. Redux is used to manage the store, and communicates with the backend to get the information, such as user's previous pairs and the new pairing. Functions such as reviewing (thumbs up and thumbs down) and deleting previous pairings are also handled via React and Redux. Social sharing, however, implements [React-Share](https://www.npmjs.com/package/react-share).
+
+![pieflix user profile page](https://media-exp3.licdn.com/dms/image/C5622AQGQqb3UMG7APw/feedshare-shrink_2048_1536/0/1625862936159?e=1628726400&v=beta&t=kV3WTo-P6PXcqqGUShe6y9TmPbgfyAJTzOotIycanRY)
+
+No CSS libraries where used. Movie posters and backdrops are collected via TMDb API call.
+
+### A Note About Conditional Rendering
+
+Potentially one of my favorite aspects of React is conditional rendering. If you take a scroll through the code in [PairingForm.js](https://github.com/jacobleonhardt/pizza_movie_pairing_app/blob/main/react-app/src/components/pair/PairingForm.js), you'll notice a good deal of it. A great benefit of it is the ability to have two separate components exist on the same route, but choose which to display based on a condition, such as whether or not the user is logged in. This is implemented in the App.js file to determine whether or not the user should be shown the Landing component, or the User component.
+```
+    const user = useSelector(state => state.session.user)
+
+    ...
+
+    <Route path="/" exact={true} >
+        {user ? <User /> : <Landing />}
+    </Route>
+```
+
+Conditional rendering is also used to control the items displayed in the navigation, and whether or not to display the normal or mobile navigation.
+
+```
+function App() {
+
+    ...
+
+    const [onMobile, setOnMobile] = useState(false)
+
+    ...
+
+    // Checks for what navigation status should be on page resizing
+    const checkForMobileSize = () => {
+        if (window.innerWidth <= 768) {
+            setOnMobile(true)
+        } else {
+            setOnMobile(false)
+        }
+    }
+
+  useEffect(() => {
+    (async() => {
+      await dispatch(authenticate());
+      setLoaded(true);
+    })();
+
+    // Sets navigation status on page load
+    window.innerWidth <= 768 ? setOnMobile(true) : setOnMobile(false)
+
+    }, [dispatch]);
+
+    window.onresize = checkForMobileSize;
+
+    return (
+        <BrowserRouter>
+            {!onMobile ? <NavBar /> : <MobileNav />}
+        ...
+        </BrowserRouter>
+    );
+```
 
 
 ***
