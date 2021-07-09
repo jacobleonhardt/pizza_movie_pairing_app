@@ -68,11 +68,30 @@ When an user choses to Find a Film, the backend of pieflix checks the list of re
 
 ***
 
-## <a name="frontend-overview"></a>Frontend Overview
+## <a name="backend-overview"></a>Backend Overview
+
+The foundation of pieflix is based on two key elements: the database schema, and the use of TMDb's API. You can view the initial pieflix database by checkout the Database Schema section of the [pieflix wiki](https://github.com/jacobleonhardt/pizza_movie_pairing_app/wiki/Database-Schema). The Wiki schema does not display the attribute used for displaying the movie's poster and backdrop path.
+
+For more information about TMDb's API, checkout the [developers section](https://developers.themoviedb.org/3/getting-started/introduction) of their website. TMDb is a fantastic resource, and their documentation and support is pretty solid.
+
+The backend of pieflix is coded in python, and uses Flask and SQLAlchemy to manage API calls and the interactions with the database. [Requests](https://docs.python-requests.org/en/master/user/quickstart/#make-a-request) is used to make calls to TMDb API and return lists of movies.
+
+The following is an example of an API call to TMDb, based on the user-input of 'dominos'
+
+``
+@pairing_routes.route('/new/<int:userId>/<pizzaPlace>')
+@login_required
+def pairing(userId, pizzaPlace):
+    if pizzaPlace == 'dominos':
+        pizza_selection = "Domino's Pizza"
+        req = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key={API}&include_adult=false&with_runtime.gte=60&original_language=en&release_date.gte=01011980&certification_country=US&certification.lte=PG-13&with_genres=12")
+``
 
 ***
 
-## <a name="backend-overview"></a>Backend Overview
+## <a name="frontend-overview"></a>Frontend Overview
+
+
 
 ***
 

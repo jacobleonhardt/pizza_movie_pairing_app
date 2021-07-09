@@ -126,8 +126,6 @@ def reversePairing(userId, movieTitle, movieYear):
     if len(results) > 0:
         chosen_movie = results[0]
         pizza_selection = ''
-# chosen_movie["release_date"]
-# chosen_movie["vote_average"]
 
         for genre in chosen_movie["genre_ids"]:
             if genre == 12:
