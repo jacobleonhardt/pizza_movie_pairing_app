@@ -15,7 +15,7 @@ Table of Contents
 
 ## <a name="the-gist"></a>The Gist
 
-Pieflix is a full stack application used to create pairings of pizza companies and movies. The app allows users to search the TMDb database by selecting one of two processes: Find a Film, or Pick a Pizza.
+Pieflix is a full stack application used to create pairings of pizza brands and movies. The app allows users to search the TMDb database by selecting one of two processes: Find a Film, or Pick a Pizza.
 
 With Find a Film, the user selects a pizza brand and the app searches for a movie using predefined filters. When a paring is displayed, users can click the "Not Feeling It?" button. If they do, pieflix will search the TMDb database for a different film that matches the same query filters. (The rejected movie will not be displayed in their list of previous pairings.)
 
