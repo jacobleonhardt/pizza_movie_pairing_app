@@ -9,6 +9,8 @@ Table of Contents
 * [Next Steps](#next-steps)
 * [Contributions](#contributions)
 
+***
+
 ![pieflix Landing page](https://media-exp3.licdn.com/dms/image/C5622AQFXSrCIzH8_fQ/feedshare-shrink_2048_1536/0/1625862936817?e=1628726400&v=beta&t=zj83oBbKwTBlIilwVY_BKKMmjwYk4N1zFfOr-f603WA)
 
 ## <a name="the-gist"></a>The Gist
