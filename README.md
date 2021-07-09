@@ -4,10 +4,10 @@ by Jacob Leonhardt | [Checkout pieflix](https://pieflix.herokuapp.com/)
 Table of Contents
 * [The Gist](#the-gist)
 * [The Stack](#the-stack)
-* Frontend Overview
-* Backend Overview
-* Next Steps
-* Contributions
+* [Frontend Overview](#frontend-overview)
+* [Backend Overview](#backend-overview)
+* [Next Steps](#next-steps)
+* [Contributions](#contributions)
 
 ![pieflix Landing page](https://media-exp3.licdn.com/dms/image/C5622AQFXSrCIzH8_fQ/feedshare-shrink_2048_1536/0/1625862936817?e=1628726400&v=beta&t=zj83oBbKwTBlIilwVY_BKKMmjwYk4N1zFfOr-f603WA)
 
@@ -64,3 +64,25 @@ When an user choses to Find a Film, the backend of pieflix checks the list of re
 This product uses the TMDb API but is not endorsed or certified by TMDb.
 
 ***
+
+## <a name="frontend-overview"></a>Frontend Overview
+
+***
+
+## <a name="backend-overview"></a>Backend Overview
+
+***
+
+## <a name="next-steps"></a>Next Steps
+
+Pieflix was a totally fun project to build, and I hope to be able to keep refining and adding on to it later. Some ideas for future development include:
+* SafeSearch feature: a checkbox users can select when using Find a Film. SafeSearch will only return movies that are considered appropriate for families/young-children.
+* A more advanced/in-depth Find a Film form.
+** Form fields would be added to include not only the pizza company, but also the specific pizza you're having from that brand.
+** Form would also include a select field for users to choose a target audience. This would be used to better expand or refine search results.
+
+***
+
+## <a name="contributions"></a>Contributions
+
+If you would like to contribute to pieflix, feel free to contact me via [linkedIn](https://www.linkedin.com/in/jacob-leonhardt-b19067ba/) or [facebook](https://www.facebook.com/profile.php?id=100009183859915).
