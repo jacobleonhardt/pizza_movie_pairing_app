@@ -17,6 +17,10 @@ Alternatively, with Pick a Pizza, the user inputs their selected movie's title a
 
 Both processes are done by filling out a simple form on the New Pair (`/pair`) page. Previous pairings are displayed on the Pairings (`/`) page, where users can also review their previous pairings by clicking on either a thumbs up or thumbs down button. Previous pairings can also be deleted by click on the trash can button.
 
+![pieflix share on social media example](https://media-exp3.licdn.com/dms/image/C5622AQGnjUTl0mPIow/feedshare-shrink_2048_1536/0/1625862938075?e=1628726400&v=beta&t=IJ6HqtUwfSVQnNVEyEYRSyAIq4LabEfelzbYCEfBXx0)
+
+Users also have the option to share pairings they like on Facebook, Twitter, and Reddit.
+
 ![pieflix share on social media example](https://media-exp3.licdn.com/dms/image/C5622AQGw6l4z0vYrHA/feedshare-shrink_2048_1536/0/1625862938100?e=1628726400&v=beta&t=EQKaAYFQjvNiqQBv8AmGMfWOIveEW8XcmdoGU2k24HY)
 
 ### A note about querying
