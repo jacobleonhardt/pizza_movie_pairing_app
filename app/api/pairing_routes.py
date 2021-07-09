@@ -125,6 +125,7 @@ def reversePairing(userId, movieTitle, movieYear):
     results = response["results"];
     if len(results) > 0:
         chosen_movie = results[0]
+        print('#############################', chosen_movie)
         pizza_selection = ''
 
         for genre in chosen_movie["genre_ids"]:
