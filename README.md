@@ -197,9 +197,9 @@ function App() {
 ## <a name="next-steps"></a>Next Steps
 
 Pieflix was a totally fun project to build, and I hope to be able to keep refining and adding on to it later. Some ideas for future development include:
-* SafeSearch feature
+* SafeSearch Feature
     * This would add a checkbox that users can select when using Find a Film. SafeSearch will only return movies that are considered appropriate for families/young-children.
-* A more advanced/in-depth Find a Film form.
+* A More Advanced/In-Depth Find a Film Form
     * Form fields would be added to include not only the pizza company, but also the specific pizza you're having from that brand.
     * Form would also include a select field for users to choose a target audience. This would be used to better expand or refine search results.
 
