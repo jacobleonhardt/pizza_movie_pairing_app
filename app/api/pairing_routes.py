@@ -125,28 +125,26 @@ def reversePairing(userId, movieTitle, movieYear):
     results = response["results"];
     if len(results) > 0:
         chosen_movie = results[0]
-        print('#############################', chosen_movie)
         pizza_selection = ''
+# chosen_movie["release_date"]
+# chosen_movie["vote_average"]
 
         for genre in chosen_movie["genre_ids"]:
             if genre == 12:
                 pizza_selection = "Domino's Pizza"
-            elif genre == 14:
+                break
+            elif genre == 14 and chosen_movie["vote_average"] >= 6.0:
                 pizza_selection = "Mellow Mushroom"
-            elif genre == 18:
+                break
+            elif genre == 18 and chosen_movie["vote_average"] >= 7.0:
                 pizza_selection = "Donatos Pizza"
-            elif genre == 28:
-                pizza_selection = "Pizza Hut"
-            elif genre == 36:
+                break
+            elif (genre == 36 or genre == 37 or genre == 10752):
                 pizza_selection = "Papa John's Pizza"
-            elif genre == 37:
-                pizza_selection = "Papa John's Pizza"
-            elif genre == 53:
+                break
+            elif (genre == 28 or genre == 53 or genre == 878) and chosen_movie["vote_average"] >= 6.5:
                 pizza_selection = "Pizza Hut"
-            elif genre == 878:
-                pizza_selection = "Pizza Hut"
-            elif genre == 10752:
-                pizza_selection = "Papa John's Pizza"
+                break
             else:
                 pizza_selection = "Little Caesars Pizza"
     else:
