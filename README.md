@@ -173,10 +173,8 @@ function App() {
     }
 
   useEffect(() => {
-    (async() => {
-      await dispatch(authenticate());
-      setLoaded(true);
-    })();
+
+    ...
 
     // Sets navigation status on page load
     window.innerWidth <= 768 ? setOnMobile(true) : setOnMobile(false)
