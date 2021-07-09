@@ -60,7 +60,7 @@ When an user choses to Find a Film, the backend of pieflix checks the list of re
 * Redux
 * [React-Share](https://www.npmjs.com/package/react-share)
 
-### Datbase
+### External Database
 
 * [TMDb (The Movie Database)](https://www.themoviedb.org/)*
 
