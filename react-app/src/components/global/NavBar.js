@@ -7,8 +7,8 @@ import './nav_footer.css';
 
 const NavBar = () => {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.session.user)
   const history = useHistory()
+  const user = useSelector(state => state.session.user)
 
   const demo = async (e) => {
     e.preventDefault();
