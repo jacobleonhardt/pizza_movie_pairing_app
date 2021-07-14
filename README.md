@@ -30,7 +30,7 @@ Table of Contents
 * Redux
 * [React-Share](https://www.npmjs.com/package/react-share)
 
-### External Database
+### Third-Party APIs
 
 * [TMDb (The Movie Database)](https://www.themoviedb.org/)*
 
