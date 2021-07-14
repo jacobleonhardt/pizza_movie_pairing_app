@@ -25,7 +25,7 @@ const SignUpForm = () => {
         history.push(`/`)
       }
     } else {
-      setErrors('Please fill out the form.')
+      setErrors(['Passwords do not match.'])
     }
 
   };
