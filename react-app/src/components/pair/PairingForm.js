@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeCall, makePizzaCall, makeDiffCall } from '../../store/pairing';
+import posterNA from '../../images/pieflix-poster-not-available.jpg'
 import './pairingform.css'
 
 const PairingForm = () => {
@@ -62,7 +63,7 @@ const PairingForm = () => {
             { condition ?
             <div id="pairing-display" className={condition ? 'solid-block with-background' : 'solid-block'} style={{background: `linear-gradient(to bottom, rgba(129,4,4,.85), rgba(129,4,4,.85)), url(https://image.tmdb.org/t/p/w500${movie.backdrop_path})`}}>
                 { !movie.error ? <> <div className="left">
-                    <img src={`https://image.tmdb.org/t/p/w500${movie.poster}`} alt={`${movie.title} movie poster`} />
+                    <img src={(movie.poster ? `https://image.tmdb.org/t/p/w500${movie.poster}` : posterNA)} alt={`${movie.title} movie poster`} />
                 </div>
                 <div className="right">
                     <h2>{movie.pizza}</h2>

@@ -134,7 +134,7 @@ def reversePairing(userId, movieTitle, movieYear):
             elif genre == 14 and chosen_movie["vote_average"] >= 6.0:
                 pizza_selection = "Mellow Mushroom"
                 break
-            elif genre == 18 and chosen_movie["vote_average"] >= 7.0:
+            elif (genre == 18 or genre == 80 or genre == 99 or genre == 9648) and chosen_movie["vote_average"] >= 6.0:
                 pizza_selection = "Donatos Pizza"
                 break
             elif (genre == 36 or genre == 37 or genre == 10752):

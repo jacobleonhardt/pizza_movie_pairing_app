@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { deletePair } from "../../../store/pairing";
 import { newReview } from "../../../store/review";
+import posterNA from '../../../images/pieflix-poster-not-available.jpg'
 import "./prevpairings.css"
 import {
     FacebookShareButton,
@@ -44,7 +45,7 @@ const PrevPairingCard = (movie) => {
         <div className="previous-pairing">
             <div id={`${movie.movie.id}`} className="pairing-cards solid-block">
                 <div className="first">
-                    <img src={`https://image.tmdb.org/t/p/w500${movie.movie.poster}`} />
+                    <img src={(movie.movie.poster ? `https://image.tmdb.org/t/p/w500${movie.movie.poster}` : posterNA)} />
                 </div>
                 <div className="second">
                     <h4>{movie.movie.title} ({movie.movie.release_date ? movie.movie.release_date.slice(0,4) : 'Unknown'})</h4>
