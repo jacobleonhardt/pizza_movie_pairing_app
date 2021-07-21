@@ -2,12 +2,39 @@
 by Jacob Leonhardt | [Checkout pieflix](https://pieflix.herokuapp.com/)
 
 Table of Contents
-* [The Gist](#the-gist)
 * [The Stack](#the-stack)
+* [The Gist](#the-gist)
 * [Backend Overview](#backend-overview)
 * [Frontend Overview](#frontend-overview)
 * [Next Steps](#next-steps)
 * [Contributions](#contributions)
+
+***
+
+## <a name="the-stack"></a>The Stack
+
+### Backend
+
+* Python
+* Flask
+* SQLAlchemy
+* PostgreSQL
+* WTForms
+* [Requests](https://docs.python-requests.org/en/master/user/quickstart/#make-a-request)
+* Random
+
+### Frontend
+
+* JavaScript/JSX
+* React
+* Redux
+* [React-Share](https://www.npmjs.com/package/react-share)
+
+### Third-Party APIs
+
+* [TMDb (The Movie Database)](https://www.themoviedb.org/)*
+
+*This product uses the TMDb API but is not endorsed or certified by TMDb.
 
 ***
 
@@ -38,33 +65,6 @@ Users also have the option to share pairings they like on Facebook, Twitter, and
 When an user choses to Find a Film, the backend of pieflix checks the list of returned movie queries from TMDb, and compares it to a list of the user's previously paired movies. Movies not found in the previously paired list are then placed into a list of possible selections, and a movie is selected randomly from that list. In this way, a user should not receive the same pizza-movie pairing twice. The exceptions to this are:
     1. If the user choses to search via Pick a Pizza, and inputs a movie they have previously paired.
     2. The user deletes the previous pair; in which case the pair would not be included in the previously paired movie list.
-
-***
-
-## <a name="the-stack"></a>The Stack
-
-### Backend
-
-* Python
-* Flask
-* SQLAlchemy
-* PostgreSQL
-* WTForms
-* [Requests](https://docs.python-requests.org/en/master/user/quickstart/#make-a-request)
-* Random
-
-### Frontend
-
-* JavaScript/JSX
-* React
-* Redux
-* [React-Share](https://www.npmjs.com/package/react-share)
-
-### External Database
-
-* [TMDb (The Movie Database)](https://www.themoviedb.org/)*
-
-*This product uses the TMDb API but is not endorsed or certified by TMDb.
 
 ***
 
@@ -190,7 +190,6 @@ function App() {
         </BrowserRouter>
     );
 ```
-
 
 ***
 
