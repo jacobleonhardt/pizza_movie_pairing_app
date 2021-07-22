@@ -1,8 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './notfound.css'
 
 const NotFound = () => {
+
+    const user = useSelector(state => state.session.user)
 
     let x = Math.floor(Math.random() * 10);
 
@@ -30,7 +33,7 @@ const NotFound = () => {
                 <h3>"{film.quote}"</h3>
                 <p>{film.said},<br/>
                 <em>{film.movie}</em></p>
-                <Link to='/' className="button-link-alt">Back to Pairings</Link>
+                <Link to='/' className="button-link-alt">{user ? 'Go to Pairings' : 'Go Home'}</Link>
             </div>
         </div>
     )
