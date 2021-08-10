@@ -71,6 +71,10 @@ button.alternate-search {
     max-width: 80%;
 }
 
+#pairing-display .right button.button-link-alt {
+    margin-bottom: 2%;
+}
+
 button#try-again {
     margin-top: 2%;
 }
