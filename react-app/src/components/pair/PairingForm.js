@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, useHistory } from "react-router-dom";
 import { makeCall, makePizzaCall, makeDiffCall } from '../../store/pairing';
 import posterNA from '../../images/pieflix-poster-not-available.jpg'
 import './pairingform.css'
 
 const PairingForm = () => {
     const dispatch = useDispatch();
+    const history = useHistory()
     const user = useSelector(state => state.session.user)
     const [pizzaPlace, setPizzaPlace] = useState("");
     const [condition, setCondition] = useState(false)
@@ -50,6 +52,9 @@ const PairingForm = () => {
         return newPair;
     }
 
+    const letsDoIt = () => {
+        history.push('/')
+    }
 
     const tryAgain = async(e) => {
         window.location.reload()
@@ -71,7 +76,9 @@ const PairingForm = () => {
                     <h5>({movie.release_date ? movie.release_date.slice(0,4) : 'Unknown'})</h5>
                     <p>{movie.plot}</p>
                     <br/>
-                    { formType ? <button onClick={notFeelingIt} className="button-link-alt">Not Feeling It?</button> : <></> }
+                    { formType ? <>
+                        <button onClick={notFeelingIt} className="button-link-alt">Not Feeling It?</button> <button onClick={letsDoIt} className="button-link-alt">Let's Do It!</button>
+                        </> : <><button onClick={letsDoIt} className="button-link-alt">Let's Do It!</button></> }
                 </div> </> :
                 <><div className="error-message">
                     <h2>{movie.error}</h2>

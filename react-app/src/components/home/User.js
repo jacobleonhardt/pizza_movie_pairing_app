@@ -15,6 +15,8 @@ function User() {
 
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+
     if (!userId) {
       return
     }
